@@ -1,13 +1,18 @@
+@import url("https://chunksui.netlify.app/css/style.css");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-poppins);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.main-container {
+  width: min(calc(90vw - 2rem), 80em);
+  margin-inline: auto;
+}
+
+.shadow {
+  box-shadow: 0 0 4px hsl(var(--bg-400));
+}
+
+.reducegap {
+  gap: 0.5rem;
 }
