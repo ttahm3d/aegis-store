@@ -1,0 +1,5 @@
+.link {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  padding-top: 1rem;
+}
