@@ -1,7 +1,7 @@
 export default function () {
   return (
     <div
-      className="flex main-container flex-center flex-column"
+      className="flex container flex-center flex-column"
       style={{ minHeight: "80vh" }}>
       <div className="flex flex-gap-2 heading-3">
         <div className="error-code">404</div>

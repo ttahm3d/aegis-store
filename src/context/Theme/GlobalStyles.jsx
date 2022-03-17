@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: inherit;
   }
 
-  .main-container {
+  .container {
     width: min(calc(90vw - 2rem), 80em);
     margin-inline: auto;
   }
