@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
-export default function () {
+export default function ({ toggleTheme }) {
   return (
     <header className={`${styles.header} shadow`}>
       <div className="main-container">
@@ -26,9 +26,7 @@ export default function () {
                 </a>
               </li>
             </ul>
-            <button className="btnToggle">
-              <i className="fas fa-moon"></i>
-            </button>
+            <button onClick={() => toggleTheme()}>Change</button>
           </div>
         </nav>
       </div>
