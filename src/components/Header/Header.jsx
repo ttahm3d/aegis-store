@@ -26,9 +26,6 @@ export default function () {
                 </a>
               </li>
             </ul>
-            <button className="btnToggle">
-              <i className="fas fa-moon"></i>
-            </button>
           </div>
         </nav>
       </div>
