@@ -1,3 +1,11 @@
+import Categories from "./Categories";
+import Hero from "./Hero";
+
 export default function () {
-  return <div className="main-container">Home</div>;
+  return (
+    <>
+      <Hero />
+      <Categories />
+    </>
+  );
 }

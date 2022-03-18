@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
+import Logo from "../../assets/AegisStore.svg";
 
 export default function () {
   return (
@@ -9,7 +10,7 @@ export default function () {
           className={`${styles.navbar} flex align-center flex-gap-2 reducegap`}>
           <div className={styles.logo}>
             <Link to="/">
-              <h2>Aegis Store</h2>
+              <img src={Logo} alt="logo" />
             </Link>
           </div>
           <div className="nav-items flex align-center flex-gap-1">
@@ -26,9 +27,6 @@ export default function () {
                 </a>
               </li>
             </ul>
-            <button className="btnToggle">
-              <i className="fas fa-moon"></i>
-            </button>
           </div>
         </nav>
       </div>

@@ -1,0 +1,40 @@
+.footer {
+  margin-top: auto;
+  padding: 4rem 0;
+}
+
+.footer__container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.links__heading {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: hsla(var(--font-600), 0.85);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list__item {
+  color: hsla(var(--font-500), 0.7);
+  padding-bottom: 0.5rem;
+}
+
+.list__item:first-child {
+  padding-top: 1.5rem;
+}
+
+.list__item:hover {
+  color: hsla(var(--font-700), 0.8);
+}
+
+@media screen and (min-width: 60em) {
+  .footer__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
