@@ -1,7 +1,18 @@
-@import url("https://chunksui.netlify.app/css/style.css");
+/* @import url("https://chunksui.netlify.app/css/style.css"); */
+@import url("https://unpkg.com/mockman-js@latest/dist/style.css");
 
 body {
   font-family: var(--font-poppins);
+  background-color: hsla(var(--bg-700), 0.8);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-Lato);
 }
 
 .main-container {
