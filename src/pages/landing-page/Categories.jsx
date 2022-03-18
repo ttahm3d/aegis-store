@@ -24,9 +24,7 @@ export default function () {
         <h3 className="heading-2 text-center">Categories</h3>
         <div className={styles.categories__container}>
           {categories.map(({ id, categoryName, imageUrl, title }) => (
-            <div
-              key={id}
-              className={`card card-border ${styles.categories__card}`}>
+            <div key={id} className={`card shadow ${styles.categories__card}`}>
               <div className={`card-image-container`}>
                 <img
                   src={imageUrl}
@@ -35,6 +33,11 @@ export default function () {
                   height={400}
                   className={styles.category__image}
                 />
+              </div>
+              <div className={styles.categories__description__container}>
+                <div className={styles.categories__description__title}>
+                  {title}
+                </div>
               </div>
             </div>
           ))}

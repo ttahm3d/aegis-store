@@ -1,5 +1,5 @@
 .hero {
-  background-color: hsla(var(--bg-600), 0.7);
+  background-color: hsla(var(--bg-600), 0.9);
 }
 
 .hero__container {
@@ -37,33 +37,24 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
   gap: 1rem;
+  padding: 4rem 0;
 }
 
 .categories__card {
   justify-content: flex-start;
   transition: 0.5s all linear;
+  align-items: center;
+  background-color: hsla(var(--bg-700), 1);
 }
 
 .category__image {
   object-fit: contain;
 }
 
-.categories__card__overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: hsla(var(--bg-500), 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.categories__overlay__text {
-  background-color: hsla(var(--font-600), 0.8);
-  color: hsla(var(--bg-600), 0.8);
+.categories__description__container {
   padding: 0.5rem 1rem;
+  margin-inline: auto;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
