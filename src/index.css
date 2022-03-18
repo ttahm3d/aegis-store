@@ -1,9 +1,15 @@
 /* @import url("https://chunksui.netlify.app/css/style.css"); */
 @import url("https://unpkg.com/mockman-js@latest/dist/style.css");
 
+/* Overriding styles from component library */
+
 body {
   font-family: var(--font-poppins);
   background-color: hsla(var(--bg-700), 0.95);
+}
+
+main {
+  padding: 0;
 }
 
 h1,
@@ -23,8 +29,4 @@ h6 {
 
 .shadow {
   box-shadow: 0 0 4px hsl(var(--bg-400));
-}
-
-.reducegap {
-  gap: 0.5rem;
 }
