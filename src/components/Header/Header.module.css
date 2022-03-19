@@ -1,6 +1,24 @@
+.header {
+  padding: 1.5rem 0;
+  background-color: hsl(var(--bg-700));
+  box-shadow: 0 0 4px hsl(var(--bg-400));
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
 .navbar {
   background-color: inherit;
   color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menu {
+  font-size: 2rem;
+  z-index: 4;
+  display: none;
 }
 
 .logo h2 {
@@ -9,6 +27,34 @@
   padding: 0;
 }
 
-.header {
-  padding: 1.5rem 0;
+.navitems {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.navlist {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transform: translateX(0%);
+  transition: 0.2s transform linear;
+}
+
+@media screen and (max-width: 35em) {
+  .navlist {
+    position: fixed;
+    inset: 0 35% 0 0;
+    flex-direction: column;
+    background-color: hsla(var(--bg-600), 1);
+    padding: min(30vh, 5rem) 2rem;
+    backdrop-filter: blue(4rem);
+  }
+
+  .menu {
+    display: block;
+  }
 }
