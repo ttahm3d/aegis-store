@@ -17,7 +17,7 @@ export const products = [
     imageUrl:
       "https://res.cloudinary.com/dut75albw/image/upload/v1647682043/AegisStore/products/jerseys/OGJersey_ac9bti.webp",
     aegisAssured: true,
-    discount: "27",
+    discount: "35",
     count: 45,
     categoryName: "jersey",
   },
@@ -31,7 +31,21 @@ export const products = [
     imageUrl:
       "https://res.cloudinary.com/dut75albw/image/upload/v1647682043/AegisStore/products/jerseys/NigmaJersey_frzs49.webp",
     aegisAssured: true,
-    discount: "26",
+    discount: "15",
+    count: 39,
+    categoryName: "jersey",
+  },
+  {
+    _id: uuid(),
+    title: "nigma-jersey",
+    name: "EG Jersey",
+    size: ["XS", "S", "M", "L", "XL", "XXL"],
+    price: "8999",
+    description: "Official Jersey of Nigma Galaxy - Stars Align",
+    imageUrl:
+      "https://res.cloudinary.com/dut75albw/image/upload/v1647682043/AegisStore/products/jerseys/EgJersey_fu5hq1.webp",
+    aegisAssured: true,
+    discount: "20",
     count: 39,
     categoryName: "jersey",
   },

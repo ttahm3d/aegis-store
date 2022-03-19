@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./Listing.module.css";
 import Filters from "./Filters";
+import Product from "./Product";
 
 export default function () {
   const [products, setProducts] = useState([]);
@@ -25,9 +26,9 @@ export default function () {
     <section className={styles.listing__container}>
       <div className={`${styles.listing} main-container`}>
         <Filters />
-        <div>
+        <div className={`${styles.products__container}`}>
           {products?.map((product) => (
-            <div>{product.name}</div>
+            <Product key={product._id} {...product} />
           ))}
         </div>
       </div>

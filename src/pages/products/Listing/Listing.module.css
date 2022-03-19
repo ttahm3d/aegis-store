@@ -8,6 +8,53 @@
   gap: 2rem;
 }
 
+.products__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 2rem;
+}
+
+.product__image {
+  object-fit: contain;
+  aspect-ratio: 3/4;
+}
+
+.product__info {
+  padding: 0.5rem 1rem 1rem;
+}
+
+.product__name {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.product__assurance {
+  font-weight: 500;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: hsl(var(--primary));
+}
+
+.product__pricing {
+  font-family: var(--font-Lato);
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  align-items: baseline;
+}
+
+.product__selling__price {
+  font-size: 1.5rem;
+  letter-spacing: -1px;
+}
+
+.product__actual__price {
+  font-size: 1.2rem;
+  letter-spacing: -1px;
+  color: hsla(var(--font-500), 0.7);
+  text-decoration: line-through;
+}
+
 @media screen and (min-width: 60em) {
   .listing {
     grid-template-columns: 1fr 4fr;
