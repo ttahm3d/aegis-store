@@ -18,7 +18,7 @@ export default function (props) {
 
   return (
     <div className={`card shadow`}>
-      <div className={`flex flex-center`}>
+      <div className={`flex flex-center ${styles.image__container}`}>
         <img
           src={imageUrl}
           className={`${styles.product__image}`}
