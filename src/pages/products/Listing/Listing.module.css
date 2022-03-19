@@ -1,0 +1,15 @@
+.listing__container {
+  padding: 3rem 0;
+}
+
+.listing {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 60em) {
+  .listing {
+    grid-template-columns: 1fr 4fr;
+  }
+}
