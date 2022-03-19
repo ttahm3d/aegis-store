@@ -35,6 +35,11 @@ export default function () {
                     : "translateX(-100%)",
               }}>
               <li className="nav-list-item">
+                <Link to="/products" onClick={() => closeSidebar()}>
+                  Products
+                </Link>
+              </li>
+              <li className="nav-list-item">
                 <Link to="/wishlist" onClick={() => closeSidebar()}>
                   Wishlist
                 </Link>

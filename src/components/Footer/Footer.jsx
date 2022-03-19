@@ -14,7 +14,7 @@ export default function () {
             <div className={styles.links__heading}>Quick Links</div>
             <ul className={`${styles.list}`}>
               <li className={styles.list__item}>
-                <Link to="/wishlist">Products</Link>
+                <Link to="/products">Products</Link>
               </li>
               <li className={styles.list__item}>
                 <Link to="/cart">Cart</Link>
