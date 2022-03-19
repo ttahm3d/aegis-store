@@ -8,23 +8,31 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    title: "You Can WIN",
-    author: "Shiv Khera",
-    price: "5000",
-    categoryName: "non-fiction",
+    title: "og-jersey",
+    name: "OG Jersey",
+    size: ["XS", "S", "M", "L", "XL", "XXL"],
+    price: "8999",
+    description:
+      "Official Jersey of OG - The home of the Only Back to Back The International Champions.",
+    imageUrl:
+      "https://res.cloudinary.com/dut75albw/image/upload/v1647682043/AegisStore/products/jerseys/OGJersey_ac9bti.webp",
+    aegisAssured: true,
+    discount: "27",
+    count: 45,
+    categoryName: "jersey",
   },
   {
     _id: uuid(),
-    title: "You are Winner",
-    author: "Junaid Qureshi",
-    price: "3000",
-    categoryName: "horror",
-  },
-  {
-    _id: uuid(),
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
+    title: "nigma-jersey",
+    name: "Nigma Jersey",
+    size: ["XS", "S", "M", "L", "XL", "XXL"],
+    price: "8999",
+    description: "Official Jersey of Nigma Galaxy - Stars Align",
+    imageUrl:
+      "https://res.cloudinary.com/dut75albw/image/upload/v1647682043/AegisStore/products/jerseys/NigmaJersey_frzs49.webp",
+    aegisAssured: true,
+    discount: "26",
+    count: 39,
+    categoryName: "jersey",
   },
 ];
