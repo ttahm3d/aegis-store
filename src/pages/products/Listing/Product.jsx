@@ -1,3 +1,4 @@
+import { PrimaryButton } from "../../../components";
 import styles from "./Listing.module.css";
 
 export default function (props) {
@@ -39,6 +40,9 @@ export default function (props) {
           <div className={`${styles.product__actual__price}`}>
             &#8377;&nbsp;{Number(price).toFixed(2)}
           </div>
+        </div>
+        <div>
+          <button className="btn btn-primary wd-100">Add to Cart</button>
         </div>
       </div>
     </div>
