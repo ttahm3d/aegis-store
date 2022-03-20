@@ -1,0 +1,20 @@
+.wishlist__circle {
+  border: 1px solid hsla(var(--bg-400), 1);
+  width: fit-content;
+  font-size: 1.2rem;
+  min-width: 2rem;
+  min-height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.wishlist__circle:hover {
+  background-color: hsla(var(--bg-600), 0.8);
+}
+
+.wishlist__circle:active {
+  background-color: hsla(var(--bg-500), 0.8);
+}

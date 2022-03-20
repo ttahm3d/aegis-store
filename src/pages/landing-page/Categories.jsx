@@ -16,19 +16,21 @@ export default function () {
     }
 
     fetchData();
-  });
+  }, []);
+
+  console.log(categories);
 
   return (
     <section className={`${styles.categories}`}>
       <div className="main-container">
         <h3 className="heading-2 text-center">Categories</h3>
         <div className={styles.categories__container}>
-          {categories.map(({ id, categoryName, imageUrl, title }) => (
+          {categories.map(({ id, name, imageUrl, title }) => (
             <div key={id} className={`card shadow ${styles.categories__card}`}>
               <div className={`card-image-container`}>
                 <img
                   src={imageUrl}
-                  alt={categoryName}
+                  alt={name}
                   width={300}
                   height={400}
                   className={styles.category__image}

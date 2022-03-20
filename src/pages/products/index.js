@@ -1,3 +1,3 @@
-import ProductListing from "./listing/Listing";
+import Listing from "./Listing/Listing";
 
-export { ProductListing };
+export { Listing };
