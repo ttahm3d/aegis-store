@@ -70,6 +70,12 @@
   justify-content: center;
 }
 
+.wishlist__container {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
 .product__overlay__outofstock {
   padding: 1rem;
   background-color: hsla(var(--font-500), 0.75);

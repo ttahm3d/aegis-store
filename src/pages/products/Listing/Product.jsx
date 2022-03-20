@@ -1,4 +1,4 @@
-import { PrimaryButton } from "../../../components";
+import { PrimaryButton, WishlistButton } from "../../../components";
 import styles from "./Listing.module.css";
 
 export default function (props) {
@@ -58,6 +58,9 @@ export default function (props) {
           </div>
         </div>
       ) : null}
+      <div className={styles.wishlist__container}>
+        <WishlistButton />
+      </div>
     </div>
   );
 }
