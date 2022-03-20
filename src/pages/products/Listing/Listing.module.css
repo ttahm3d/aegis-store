@@ -15,7 +15,7 @@
 }
 
 .image__container {
-  background-color: hsla(var(--bg-600), 0.7);
+  background-color: hsla(var(--bg-600), 0.35);
 }
 
 .product__image {
@@ -28,7 +28,7 @@
 }
 
 .product__name {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
@@ -36,7 +36,6 @@
   font-weight: 500;
   font-size: 0.85rem;
   font-style: italic;
-  color: hsl(var(--primary));
 }
 
 .product__pricing {
@@ -48,7 +47,7 @@
 }
 
 .product__selling__price {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   letter-spacing: -1px;
 }
 
@@ -57,6 +56,24 @@
   letter-spacing: -1px;
   color: hsla(var(--font-500), 0.7);
   text-decoration: line-through;
+}
+
+.product__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsla(var(--font-700), 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product__overlay__outofstock {
+  padding: 1rem;
+  background-color: hsla(var(--font-500), 0.75);
+  color: hsla(var(--bg-600), 0.85);
 }
 
 @media screen and (min-width: 60em) {

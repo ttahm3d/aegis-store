@@ -29,9 +29,15 @@ export default function (props) {
       <div className={`${styles.product__info}`}>
         <div className={`${styles.product__name}`}>{name}</div>
         <div className={`${styles.product__assurance}`}>
-          {aegisAssured
-            ? "Assured Fast Delivery"
-            : "There may be delay in delivery"}
+          {aegisAssured ? (
+            <div style={{ color: "hsla(var(--blue-500))" }}>
+              Assured Fast Delivery
+            </div>
+          ) : (
+            <div style={{ color: "hsla(var(--red-500))" }}>
+              There may be delay in delivery
+            </div>
+          )}
         </div>
         <div className={`${styles.product__pricing}`}>
           <div className={`${styles.product__selling__price}`}>
@@ -45,6 +51,13 @@ export default function (props) {
           <button className="btn btn-primary wd-100">Add to Cart</button>
         </div>
       </div>
+      {count === 0 ? (
+        <div className={styles.product__overlay}>
+          <div className={styles.product__overlay__outofstock}>
+            <>Out of Stock</>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
