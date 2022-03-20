@@ -6,6 +6,7 @@
     "@radix-ui/colors": "^0.1.8",
     "axios": "^0.26.1",
     "dayjs": "^1.10.7",
+    "dot-env": "^0.0.1",
     "jwt-decode": "^3.1.2",
     "jwt-encode": "^1.0.1",
     "miragejs": "^0.1.41",
