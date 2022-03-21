@@ -1,18 +1,17 @@
 import { PrimaryButton, WishlistButton } from "../../../components";
+import Rating from "../../../components/Rating/Rating";
 import styles from "./Listing.module.css";
 
 export default function (props) {
   const {
-    _id,
     title,
     name,
-    size,
     price,
     imageUrl,
     discount,
     aegisAssured,
     count,
-    categoryName,
+    rating,
   } = props;
 
   const discountedPrice = Number(price) - Number(price) * (discount / 100);
@@ -28,16 +27,19 @@ export default function (props) {
       </div>
       <div className={`${styles.product__info}`}>
         <div className={`${styles.product__name}`}>{name}</div>
-        <div className={`${styles.product__assurance}`}>
-          {aegisAssured ? (
-            <div style={{ color: "hsla(var(--blue-500))" }}>
-              Assured Fast Delivery
-            </div>
-          ) : (
-            <div style={{ color: "hsla(var(--red-500))" }}>
-              There may be delay in delivery
-            </div>
-          )}
+        <div className={styles.product__rating__assurance}>
+          <div className={`${styles.product__assurance}`}>
+            {aegisAssured ? (
+              <div style={{ color: "hsla(var(--blue-500))" }}>
+                Assured Fast Delivery
+              </div>
+            ) : (
+              <div style={{ color: "hsla(var(--red-500))" }}>
+                There may be delay in delivery
+              </div>
+            )}
+          </div>
+          <Rating rating={rating} />
         </div>
         <div className={`${styles.product__pricing}`}>
           <div className={`${styles.product__selling__price}`}>

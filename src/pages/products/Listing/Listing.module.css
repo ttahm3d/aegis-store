@@ -38,6 +38,12 @@
   font-weight: 600;
 }
 
+.product__rating__assurance {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
 .product__assurance {
   font-weight: 500;
   font-size: 0.85rem;
