@@ -8,6 +8,12 @@
   gap: 2rem;
 }
 
+.products__info {
+  padding: 1rem 0.5rem 1rem;
+  background-color: hsla(var(--bg-600), 0.85);
+  margin-bottom: 1rem;
+}
+
 .products__container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
