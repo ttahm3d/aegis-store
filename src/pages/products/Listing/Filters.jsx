@@ -86,6 +86,38 @@ export default function () {
         </div>
       </div>
       <div className="sidebar-section">
+        <div className={styles.sidebar__section__heading}>Out of Stock</div>
+        <div className="input-group-hz">
+          <input
+            type="checkbox"
+            id="show-only-in-stock"
+            checked={state.showOnlyInStock ? true : false}
+            onChange={(e) =>
+              dispatch({ type: "OUT_OF_STOCK", payload: e.target.checked })
+            }
+          />
+          <label className={styles.sidebar__label} htmlFor="show-only-in-stock">
+            Show only in Stock
+          </label>
+        </div>
+      </div>
+      <div className="sidebar-section">
+        <div className={styles.sidebar__section__heading}>Fast Delivery</div>
+        <div className="input-group-hz">
+          <input
+            type="checkbox"
+            id="fast-delivery"
+            checked={state.fastDelivery ? true : false}
+            onChange={(e) =>
+              dispatch({ type: "FAST_DELIVERY", payload: e.target.checked })
+            }
+          />
+          <label className={styles.sidebar__label} htmlFor="fast-delivery">
+            Only Fast Delivery
+          </label>
+        </div>
+      </div>
+      <div className="sidebar-section">
         <div className={styles.sidebar__section__heading}>Categories</div>
         <div className="input-group-hz">
           <input
