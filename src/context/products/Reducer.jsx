@@ -11,6 +11,8 @@ const productsReducer = (state, { type, payload }) => {
       };
     case "MIN_PRICE":
       return { ...state, minPrice: Number(payload) };
+    case "FILTER_BY_RATING":
+      return { ...state, rating: payload };
     case "RESET":
       return {
         sortBy: "",

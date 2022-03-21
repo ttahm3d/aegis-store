@@ -14,6 +14,13 @@ const sortProducts = (state, products) => {
   }
 };
 
+const filterByRating = (state, products) => {
+  if (state.rating !== 0) {
+    return products.filter((product) => product.rating > state.rating);
+  }
+  return products;
+};
+
 const filterProductsByCategory = (state, products) => {
   return state.categories.length === 0
     ? products
@@ -34,5 +41,6 @@ export {
   sortProducts,
   filterProductsByCategory,
   filterProductsWithMinPrice,
+  filterByRating,
   getResultantProducts,
 };

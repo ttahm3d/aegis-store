@@ -12,12 +12,14 @@ import {
   sortProducts,
   filterProductsByCategory,
   filterProductsWithMinPrice,
+  filterByRating,
 } from "./utils";
 
 const initialState = {
   sortBy: "",
   categories: [],
   minPrice: 0,
+  rating: 0,
 };
 
 const ProductsContext = createContext();
@@ -44,7 +46,8 @@ const ProductsProvider = ({ children }) => {
     state,
     sortProducts,
     filterProductsByCategory,
-    filterProductsWithMinPrice
+    filterProductsWithMinPrice,
+    filterByRating
   )(products);
 
   return (

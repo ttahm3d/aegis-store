@@ -4,6 +4,7 @@ import styles from "./Filter.module.css";
 
 export default function () {
   const { state, dispatch } = useProducts();
+  console.log(state);
 
   const optionsList = [
     {
@@ -191,7 +192,7 @@ export default function () {
             type="radio"
             id="rating-more-than-4"
             name="rating"
-            value="rating-more-than-4"
+            value={4}
             checked={state.sortBy === "rating-more-than-4"}
             onChange={(e) => {
               dispatch({
@@ -212,7 +213,7 @@ export default function () {
             type="radio"
             id="rating-more-than-3"
             name="rating"
-            value="rating-more-than-3"
+            value={3}
             checked={state.sortBy === "rating-more-than-3"}
             onChange={(e) => {
               dispatch({
@@ -233,7 +234,7 @@ export default function () {
             type="radio"
             id="rating-more-than-2"
             name="rating"
-            value="rating-more-than-2"
+            value={2}
             checked={state.sortBy === "rating-more-than-2"}
             onChange={(e) => {
               dispatch({
