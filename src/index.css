@@ -35,3 +35,7 @@ input[type="radio"],
 input[type="checkbox"] {
   accent-color: hsl(var(--primary-dark));
 }
+
+.sidebar-section:not(:last-child) {
+  border-bottom: 1px solid hsl(var(--bg-400));
+}

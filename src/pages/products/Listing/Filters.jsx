@@ -41,7 +41,7 @@ export default function () {
             }}
           />
           <label className={styles.sidebar__label} htmlFor="sort-low-to-high">
-            Low to high
+            Price &mdash; Low to high
           </label>
         </div>
         <div className="input-group-hz">
@@ -59,7 +59,7 @@ export default function () {
             }}
           />
           <label className={styles.sidebar__label} htmlFor="sort-high-to-low">
-            High to low
+            Price &mdash; High to low
           </label>
         </div>
       </div>
