@@ -12,7 +12,7 @@ export default function () {
   return (
     <div className="main-container">
       <div className={styles.form__container}>
-        <div className={styles.form__title}>Login</div>
+        <div className={styles.form__title}>Signup</div>
         <form className={styles.form__wrapper}>
           <div className={styles.form__item}>
             <label htmlFor="full_name" className={styles.form__label}>
