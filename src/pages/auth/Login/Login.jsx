@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 
 export default function () {
@@ -48,6 +49,12 @@ export default function () {
             </button>
           </div>
         </form>
+        <div>
+          <span className="fg-lighter">Don't have an account ?</span>
+          <Link className="link link-primary" to="/auth/signup">
+            Create a new Account
+          </Link>
+        </div>
       </div>
     </div>
   );

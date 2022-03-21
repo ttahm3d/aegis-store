@@ -52,7 +52,7 @@ export default function () {
               <li className="nav-list-item">
                 <Link
                   className="btn btn-accent"
-                  to="/login"
+                  to="/auth/login"
                   onClick={() => closeSidebar()}>
                   Login
                 </Link>
