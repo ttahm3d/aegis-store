@@ -32,7 +32,8 @@ h6 {
 }
 
 input[type="radio"],
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="range"] {
   accent-color: hsl(var(--primary-dark));
 }
 

@@ -4,6 +4,29 @@ import styles from "./Filter.module.css";
 export default function () {
   const { state, dispatch } = useProducts();
 
+  const optionsList = [
+    {
+      price: 0,
+      display: "0",
+    },
+    {
+      price: 4000,
+      display: "4K",
+    },
+    {
+      price: 8000,
+      display: "8K",
+    },
+    {
+      price: 12000,
+      display: "12K",
+    },
+    {
+      price: 16000,
+      display: "16k",
+    },
+  ];
+
   console.log(state);
 
   const handleCategories = (event) => {
@@ -142,9 +165,9 @@ export default function () {
         <input
           type="range"
           id="price"
-          min={2000}
-          max={25000}
-          step={1000}
+          min={0}
+          max={16000}
+          step={4000}
           list="tickmarks"
           value={state.minPrice}
           onChange={(e) =>
@@ -154,11 +177,10 @@ export default function () {
             })
           }
         />
-        <datalist id="tickmarks">
-          <option value="0" label="0">
-            0
-          </option>
-          <option value="25000" label="1000"></option>
+        <datalist id="tickmarks" className="flex flex-gap-2 justify-between">
+          {optionsList.map(({ price, display }) => (
+            <option key={price} value={price} label={display}></option>
+          ))}
         </datalist>
       </div>
     </aside>
