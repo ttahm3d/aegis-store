@@ -20,6 +20,10 @@
   gap: 2rem;
 }
 
+.product__card {
+  height: max-content;
+}
+
 .image__container {
   background-color: hsla(var(--bg-600), 0.35);
 }
@@ -48,6 +52,10 @@
   font-weight: 500;
   font-size: 0.85rem;
   font-style: italic;
+  color: hsl(var(--primary));
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .product__pricing {

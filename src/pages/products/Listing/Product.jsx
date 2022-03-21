@@ -1,4 +1,5 @@
-import { PrimaryButton, WishlistButton } from "../../../components";
+import { WishlistButton } from "../../../components";
+import { FaRunning } from "react-icons/fa";
 import Rating from "../../../components/Rating/Rating";
 import styles from "./Listing.module.css";
 
@@ -17,7 +18,7 @@ export default function (props) {
   const discountedPrice = Number(price) - Number(price) * (discount / 100);
 
   return (
-    <div className={`card shadow`}>
+    <div className={`card shadow ${styles.product__card}`}>
       <div className={`flex flex-center ${styles.image__container}`}>
         <img
           src={imageUrl}
@@ -30,14 +31,10 @@ export default function (props) {
         <div className={styles.product__rating__assurance}>
           <div className={`${styles.product__assurance}`}>
             {aegisAssured ? (
-              <div style={{ color: "hsla(var(--blue-500))" }}>
-                Assured Fast Delivery
-              </div>
-            ) : (
-              <div style={{ color: "hsla(var(--red-500))" }}>
-                There may be delay in delivery
-              </div>
-            )}
+              <>
+                <FaRunning /> Fast delivery
+              </>
+            ) : null}
           </div>
           <Rating rating={rating} />
         </div>
