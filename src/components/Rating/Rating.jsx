@@ -10,7 +10,7 @@ export default function ({ rating }) {
       };
     } else if (rating >= 3 && rating < 4) {
       return {
-        backgroundColor: "hsl(var(--accent-light))",
+        backgroundColor: "hsl(37 80% 60% / 1)",
         color: "var(--pure-black)",
       };
     } else if (rating >= 4) {
