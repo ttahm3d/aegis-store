@@ -13,6 +13,8 @@ import {
   filterProductsByCategory,
   filterProductsWithMinPrice,
   filterByRating,
+  filterOutOutOfStockProducts,
+  showFastDeliveryProducts,
 } from "./utils";
 
 const initialState = {
@@ -49,6 +51,8 @@ const ProductsProvider = ({ children }) => {
     sortProducts,
     filterProductsByCategory,
     filterProductsWithMinPrice,
+    filterOutOutOfStockProducts,
+    showFastDeliveryProducts,
     filterByRating
   )(products);
 
