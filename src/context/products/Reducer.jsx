@@ -18,6 +18,7 @@ const productsReducer = (state, { type, payload }) => {
         sortBy: "",
         categories: [],
         minPrice: 0,
+        rating: 0,
       };
     default:
       return state;
