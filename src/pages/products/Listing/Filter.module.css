@@ -9,7 +9,7 @@
   padding: 1rem 0 0.5rem;
   font-weight: 500;
   text-transform: uppercase;
-  color: hsla(var(--font-700), 0.85);
+  color: hsla(var(--primary), 0.85);
 }
 
 .sidebar__label {
