@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useProducts } from "../../../context/products/Context";
 import styles from "./Listing.module.css";
 import Filters from "./Filters";
 import Product from "./Product";
 
 export default function () {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const { data } = await axios.get("/api/products");
-        setProducts(data?.products);
-      } catch (e) {
-        console.log("error", e);
-      }
-    }
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const { data } = await axios.get("/api/products");
+  //       setProducts(data?.products);
+  //     } catch (e) {
+  //       console.log("error", e);
+  //     }
+  //   }
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  console.log(products);
+  const { products } = useProducts();
 
   return (
     <section className={styles.listing__container}>

@@ -30,3 +30,8 @@ h6 {
 .shadow {
   box-shadow: 0 0 4px hsl(var(--bg-400));
 }
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: hsl(var(--primary-dark));
+}
