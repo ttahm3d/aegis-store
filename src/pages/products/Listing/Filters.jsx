@@ -1,4 +1,5 @@
 import { useProducts } from "../../../context/products/Context";
+import { AiFillStar } from "react-icons/ai";
 import styles from "./Filter.module.css";
 
 export default function () {
@@ -182,6 +183,72 @@ export default function () {
             <option key={price} value={price} label={display}></option>
           ))}
         </datalist>
+      </div>
+      <div className="sidebar-section">
+        <div className={styles.sidebar__section__heading}>Rating</div>
+        <div className="input-group-hz">
+          <input
+            type="radio"
+            id="rating-more-than-4"
+            name="rating"
+            value="rating-more-than-4"
+            checked={state.sortBy === "rating-more-than-4"}
+            onChange={(e) => {
+              dispatch({
+                type: "FILTER_BY_RATING",
+                payload: e.target.value,
+              });
+            }}
+          />
+          <label
+            className={`${styles.sidebar__label} flex align-center`}
+            htmlFor="rating-more-than-4">
+            4&nbsp;
+            <AiFillStar /> and above
+          </label>
+        </div>
+        <div className="input-group-hz">
+          <input
+            type="radio"
+            id="rating-more-than-3"
+            name="rating"
+            value="rating-more-than-3"
+            checked={state.sortBy === "rating-more-than-3"}
+            onChange={(e) => {
+              dispatch({
+                type: "FILTER_BY_RATING",
+                payload: e.target.value,
+              });
+            }}
+          />
+          <label
+            className={`${styles.sidebar__label} flex align-center`}
+            htmlFor="rating-more-than-4">
+            3&nbsp;
+            <AiFillStar /> and above
+          </label>
+        </div>
+        <div className="input-group-hz">
+          <input
+            type="radio"
+            id="rating-more-than-2"
+            name="rating"
+            value="rating-more-than-2"
+            checked={state.sortBy === "rating-more-than-2"}
+            onChange={(e) => {
+              dispatch({
+                type: "FILTER_BY_RATING",
+                payload: e.target.value,
+              });
+            }}
+          />
+          <label
+            className={`${styles.sidebar__label} flex align-center`}
+            htmlFor="rating-more-than-4">
+            2&nbsp;
+            <AiFillStar /> and above
+          </label>
+        </div>
       </div>
     </aside>
   );
