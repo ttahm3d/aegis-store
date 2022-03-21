@@ -20,6 +20,8 @@ const initialState = {
   categories: [],
   minPrice: 0,
   rating: 0,
+  showOnlyInStock: false,
+  fastDelivery: false,
 };
 
 const ProductsContext = createContext();

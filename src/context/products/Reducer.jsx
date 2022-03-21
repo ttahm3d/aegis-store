@@ -13,12 +13,18 @@ const productsReducer = (state, { type, payload }) => {
       return { ...state, minPrice: Number(payload) };
     case "FILTER_BY_RATING":
       return { ...state, rating: payload };
+    case "OUT_OF_STOCK":
+      return { ...state, showOnlyInStock: payload };
+    case "FAST_DELIVERY":
+      return { ...state, fastDelivery: payload };
     case "RESET":
       return {
         sortBy: "",
         categories: [],
         minPrice: 0,
         rating: 0,
+        showOnlyInStock: false,
+        fastDelivery: false,
       };
     default:
       return state;
