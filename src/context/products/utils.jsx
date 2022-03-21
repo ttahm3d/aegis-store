@@ -14,6 +14,17 @@ const sortProducts = (state, products) => {
   }
 };
 
-const filterProductsByCategory = (state, products) => {};
+const filterProductsByCategory = (state, products) => {
+  return state.categories.length === 0
+    ? products
+    : products.filter((product) =>
+        state.categories.some((category) => category === product?.categoryName)
+      );
+};
 
-export { sortProducts, getResultantProducts, filterProductsByCategory };
+const getResultantProducts =
+  (state, ...filters) =>
+  (products) =>
+    filters.reduce((filter, curFn) => curFn(state, filter), products);
+
+export { sortProducts, filterProductsByCategory, getResultantProducts };

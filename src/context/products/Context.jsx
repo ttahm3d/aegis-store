@@ -15,12 +15,7 @@ import {
 
 const initialState = {
   sortBy: "",
-  categories: {
-    jersey: false,
-    hoodie: false,
-    keyboard: false,
-    chair: false,
-  },
+  categories: [],
 };
 
 const ProductsContext = createContext();
@@ -43,7 +38,11 @@ const ProductsProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const productsToShow = getResultantProducts(state, sortProducts)(products);
+  const productsToShow = getResultantProducts(
+    state,
+    sortProducts,
+    filterProductsByCategory
+  )(products);
 
   return (
     <ProductsContext.Provider

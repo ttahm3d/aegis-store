@@ -4,9 +4,22 @@ import styles from "./Filter.module.css";
 export default function () {
   const { state, dispatch } = useProducts();
 
+  console.log(state);
+
+  const handleCategories = (event) => {
+    const { checked, value } = event.target;
+    if (checked) {
+      return { type: "ADD_CATEGORY_TO_CATEGORIES", payload: value };
+    }
+    return { type: "REMOVE_CATEGORY_FROM_CATEGORIES", payload: value };
+  };
+
   return (
     <aside className={styles.sidebar}>
-      <div className={styles.sidebar__title}>Filters</div>
+      <div className="flex justify-between align-center">
+        <div className={styles.sidebar__title}>Filters</div>
+        <button className="btn btn-secondary">Reset</button>
+      </div>
       <div className="sidebar-section">
         <div className={styles.sidebar__section__heading}>Sort By</div>
         <div className="input-group-hz">
@@ -52,14 +65,9 @@ export default function () {
           <input
             type="checkbox"
             name="categories"
+            value="jersey"
             id="jersey"
-            checked={state?.categories?.jersey === true ? true : false}
-            onChange={(e) =>
-              dispatch({
-                type: "FILTER_BY_CATEGORY",
-                payload: { name: "jersey", value: e.target.checked },
-              })
-            }
+            onChange={(e) => dispatch(handleCategories(e))}
           />
           <label className={styles.sidebar__label} htmlFor="jersey">
             Jerseys
@@ -69,14 +77,9 @@ export default function () {
           <input
             type="checkbox"
             name="categories"
+            value="hoodie"
             id="hoodie"
-            checked={state?.categories?.hoodie === true ? true : false}
-            onChange={(e) =>
-              dispatch({
-                type: "FILTER_BY_CATEGORY",
-                payload: { name: "hoodie", value: e.target.checked },
-              })
-            }
+            onChange={(e) => dispatch(handleCategories(e))}
           />
           <label className={styles.sidebar__label} htmlFor="hoodie">
             Hoodies
@@ -86,14 +89,9 @@ export default function () {
           <input
             type="checkbox"
             name="categories"
+            value="keyboard"
             id="keyboard"
-            checked={state?.categories?.keyboard === true ? true : false}
-            onChange={(e) =>
-              dispatch({
-                type: "FILTER_BY_CATEGORY",
-                payload: { name: "keyboard", value: e.target.checked },
-              })
-            }
+            onChange={(e) => dispatch(handleCategories(e))}
           />
           <label className={styles.sidebar__label} htmlFor="keyboard">
             Keyboards
@@ -103,39 +101,13 @@ export default function () {
           <input
             type="checkbox"
             name="categories"
+            value="chair"
             id="chair"
-            checked={state?.categories?.chair === true ? true : false}
-            onChange={(e) =>
-              dispatch({
-                type: "FILTER_BY_CATEGORY",
-                payload: { name: "chair", value: e.target.checked },
-              })
-            }
+            onChange={(e) => dispatch(handleCategories(e))}
           />
           <label className={styles.sidebar__label} htmlFor="chair">
             Chairs
           </label>
-        </div>
-      </div>
-      <div class="sidebar-section">
-        <div class="sidebar-section-heading products-sidebar-heading">
-          Ratings
-        </div>
-        <div class="input-group-hz">
-          <input type="radio" name="rating" id="four-and-above" />
-          <label htmlFor="four-and-above">4 & above</label>
-        </div>
-        <div class="input-group-hz">
-          <input type="radio" name="rating" id="three-and-above" />
-          <label htmlFor="three-and-above">3 & above</label>
-        </div>
-        <div class="input-group-hz">
-          <input type="radio" name="rating" id="two-and-above" />
-          <label htmlFor="two-and-above">2 & above</label>
-        </div>
-        <div class="input-group-hz">
-          <input type="radio" name="rating" id="one-and-above" />
-          <label htmlFor="one-and-above">1 & above</label>
         </div>
       </div>
     </aside>
