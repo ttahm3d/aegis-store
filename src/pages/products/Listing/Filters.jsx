@@ -4,7 +4,7 @@ import styles from "./Filter.module.css";
 
 export default function () {
   const { state, dispatch } = useProducts();
-
+  console.log(state.fastDelivery);
   const optionsList = [
     {
       price: 0,

@@ -32,6 +32,16 @@ const filterProductsByCategory = (state, products) => {
 const filterProductsWithMinPrice = (state, products) =>
   products.filter((product) => product.price >= state.minPrice);
 
+const filterOutOutOfStockProducts = (state, products) =>
+  state.showOnlyInStock
+    ? products.filter((product) => product.count !== 0)
+    : products;
+
+const showFastDeliveryProducts = (state, products) =>
+  state.fastDelivery
+    ? products.filter((product) => product.aegisAssured === true)
+    : products;
+
 const getResultantProducts =
   (state, ...filters) =>
   (products) =>
@@ -42,5 +52,7 @@ export {
   filterProductsByCategory,
   filterProductsWithMinPrice,
   filterByRating,
+  filterOutOutOfStockProducts,
+  showFastDeliveryProducts,
   getResultantProducts,
 };
