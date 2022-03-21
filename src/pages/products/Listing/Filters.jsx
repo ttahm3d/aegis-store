@@ -18,7 +18,11 @@ export default function () {
     <aside className={styles.sidebar}>
       <div className="flex justify-between align-center">
         <div className={styles.sidebar__title}>Filters</div>
-        <button className="btn btn-secondary">Reset</button>
+        <button
+          className="btn btn-secondary"
+          onClick={() => dispatch({ type: "RESET" })}>
+          Reset
+        </button>
       </div>
       <div className="sidebar-section">
         <div className={styles.sidebar__section__heading}>Sort By</div>
@@ -67,6 +71,11 @@ export default function () {
             name="categories"
             value="jersey"
             id="jersey"
+            checked={
+              state.categories.find((category) => category === "jersey")
+                ? true
+                : false
+            }
             onChange={(e) => dispatch(handleCategories(e))}
           />
           <label className={styles.sidebar__label} htmlFor="jersey">
@@ -78,6 +87,11 @@ export default function () {
             type="checkbox"
             name="categories"
             value="hoodie"
+            checked={
+              state.categories.find((category) => category === "hoodie")
+                ? true
+                : false
+            }
             id="hoodie"
             onChange={(e) => dispatch(handleCategories(e))}
           />
@@ -90,6 +104,11 @@ export default function () {
             type="checkbox"
             name="categories"
             value="keyboard"
+            checked={
+              state.categories.find((category) => category === "keyboard")
+                ? true
+                : false
+            }
             id="keyboard"
             onChange={(e) => dispatch(handleCategories(e))}
           />
@@ -102,6 +121,11 @@ export default function () {
             type="checkbox"
             name="categories"
             value="chair"
+            checked={
+              state.categories.find((category) => category === "chair")
+                ? true
+                : false
+            }
             id="chair"
             onChange={(e) => dispatch(handleCategories(e))}
           />

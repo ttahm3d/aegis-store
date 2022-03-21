@@ -14,6 +14,7 @@ const productsReducer = (state, action) => {
     case "RESET":
       return {
         sortBy: "",
+        categories: [],
       };
     default:
       return state;
