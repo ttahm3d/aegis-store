@@ -4,7 +4,6 @@ import styles from "./Filter.module.css";
 
 export default function () {
   const { state, dispatch } = useProducts();
-  console.log(state);
 
   const optionsList = [
     {
@@ -28,8 +27,6 @@ export default function () {
       display: "16k",
     },
   ];
-
-  console.log(state);
 
   const handleCategories = (event) => {
     const { checked, value } = event.target;
@@ -193,7 +190,7 @@ export default function () {
             id="rating-more-than-4"
             name="rating"
             value={4}
-            checked={state.sortBy === "rating-more-than-4"}
+            checked={state.rating === "4"}
             onChange={(e) => {
               dispatch({
                 type: "FILTER_BY_RATING",
@@ -214,7 +211,7 @@ export default function () {
             id="rating-more-than-3"
             name="rating"
             value={3}
-            checked={state.sortBy === "rating-more-than-3"}
+            checked={state.rating === "3"}
             onChange={(e) => {
               dispatch({
                 type: "FILTER_BY_RATING",
@@ -224,7 +221,7 @@ export default function () {
           />
           <label
             className={`${styles.sidebar__label} flex align-center`}
-            htmlFor="rating-more-than-4">
+            htmlFor="rating-more-than-3">
             3&nbsp;
             <AiFillStar /> and above
           </label>
@@ -235,7 +232,7 @@ export default function () {
             id="rating-more-than-2"
             name="rating"
             value={2}
-            checked={state.sortBy === "rating-more-than-2"}
+            checked={state.rating === "2"}
             onChange={(e) => {
               dispatch({
                 type: "FILTER_BY_RATING",
@@ -245,7 +242,7 @@ export default function () {
           />
           <label
             className={`${styles.sidebar__label} flex align-center`}
-            htmlFor="rating-more-than-4">
+            htmlFor="rating-more-than-2">
             2&nbsp;
             <AiFillStar /> and above
           </label>
