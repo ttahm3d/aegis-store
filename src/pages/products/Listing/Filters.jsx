@@ -134,6 +134,33 @@ export default function () {
           </label>
         </div>
       </div>
+      <div className="sidebar-section">
+        <div className={styles.sidebar__section__heading}>Filter by Price</div>
+        <label className={styles.sidebar__label} htmlFor="price">
+          Minimum Price: {state.minPrice}
+        </label>
+        <input
+          type="range"
+          id="price"
+          min={2000}
+          max={25000}
+          step={1000}
+          list="tickmarks"
+          value={state.minPrice}
+          onChange={(e) =>
+            dispatch({
+              type: "MIN_PRICE",
+              payload: e.target.value,
+            })
+          }
+        />
+        <datalist id="tickmarks">
+          <option value="0" label="0">
+            0
+          </option>
+          <option value="25000" label="1000"></option>
+        </datalist>
+      </div>
     </aside>
   );
 }

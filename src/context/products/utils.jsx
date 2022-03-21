@@ -22,9 +22,17 @@ const filterProductsByCategory = (state, products) => {
       );
 };
 
+const filterProductsWithMinPrice = (state, products) =>
+  products.filter((product) => product.price >= state.minPrice);
+
 const getResultantProducts =
   (state, ...filters) =>
   (products) =>
     filters.reduce((filter, curFn) => curFn(state, filter), products);
 
-export { sortProducts, filterProductsByCategory, getResultantProducts };
+export {
+  sortProducts,
+  filterProductsByCategory,
+  filterProductsWithMinPrice,
+  getResultantProducts,
+};

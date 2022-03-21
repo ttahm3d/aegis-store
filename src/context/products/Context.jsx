@@ -11,11 +11,13 @@ import {
   getResultantProducts,
   sortProducts,
   filterProductsByCategory,
+  filterProductsWithMinPrice,
 } from "./utils";
 
 const initialState = {
   sortBy: "",
   categories: [],
+  minPrice: 0,
 };
 
 const ProductsContext = createContext();
@@ -41,7 +43,8 @@ const ProductsProvider = ({ children }) => {
   const productsToShow = getResultantProducts(
     state,
     sortProducts,
-    filterProductsByCategory
+    filterProductsByCategory,
+    filterProductsWithMinPrice
   )(products);
 
   return (
