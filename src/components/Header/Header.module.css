@@ -4,7 +4,7 @@
   box-shadow: 0 0 4px hsl(var(--bg-400));
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 3;
 }
 
 .navbar {

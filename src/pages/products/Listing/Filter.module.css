@@ -15,3 +15,47 @@
 .sidebar__label {
   color: hsla(var(--font-500), 1);
 }
+
+.sidebar__collapse__btn {
+  display: block;
+  outline: transparent;
+  outline-offset: 2px;
+  border: 2px solid hsl(var(--bg-600), 0.34);
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  padding: 1rem 1rem 3rem;
+  background-color: hsl(var(--bg-700));
+  backdrop-filter: blur(5rem);
+  z-index: 2;
+}
+
+@media screen and (min-width: 65em) {
+  .sidebar__collapse__btn {
+    display: none;
+  }
+
+  .sidebar {
+    overflow: hidden auto;
+    top: 20vh;
+    height: 70vh;
+  }
+
+  .sidebar::-webkit-scrollbar {
+    width: 0.75rem;
+  }
+
+  .sidebar::-webkit-scrollbar-track {
+    background: hsla(var(--accent), 0.2);
+  }
+
+  .sidebar::-webkit-scrollbar-thumb {
+    background: hsla(var(--accent), 0.36);
+  }
+
+  .sidebar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}

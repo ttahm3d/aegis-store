@@ -1,5 +1,6 @@
 .listing__container {
-  padding: 3rem 0;
+  padding: 0rem 0 3rem;
+  background-color: hsla(var(--bg-700), 1);
 }
 
 .listing {
@@ -9,15 +10,14 @@
 }
 
 .products__info {
-  padding: 1rem 0.5rem 1rem;
-  background-color: hsla(var(--bg-600), 0.85);
-  margin-bottom: 1rem;
+  display: none;
 }
 
 .products__container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 2rem;
+  background-color: inherit;
 }
 
 .product__card {
@@ -102,8 +102,15 @@
   color: hsla(var(--bg-600), 0.85);
 }
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 65em) {
   .listing {
     grid-template-columns: 1fr 4fr;
+  }
+
+  .products__info {
+    display: block;
+    padding: 1rem 0.5rem 1rem;
+    background-color: hsla(var(--bg-600), 0.85);
+    margin-bottom: 1rem;
   }
 }
