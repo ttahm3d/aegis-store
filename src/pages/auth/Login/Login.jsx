@@ -1,17 +1,34 @@
 import { useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
+import { useLocalStorage } from "../../../hooks";
 
 export default function () {
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
   });
+  // const [value, setValue] = useLocalStorage("token-1");
+  const [token, setToken] = useLocalStorage("token");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // handle dispatch here
+    const { data } = await axios.post("/api/auth/login", {
+      email: "adarshbalika@gmail.com",
+      password: "adarshbalika",
+    });
 
+    const { user, encodedToken } = data;
+    setToken(encodedToken);
+    // setValue("token-2", "newvalue");
+    // axios
+    //   .post("/api/auth/login", {
+    //     email: "adarshbalika@gmail.com",
+    //     password: "adarshbalika",
+    //   })
+    //   .then((res) => console.log(res))
+    //   .catch((e) => console.error(e));
     setLoginForm((loginForm) => ({
       ...loginForm,
       email: "",
@@ -36,6 +53,7 @@ export default function () {
               onChange={(e) =>
                 setLoginForm({ ...loginForm, email: e.target.value })
               }
+              required
               className={styles.form__input}
             />
           </div>
@@ -48,6 +66,7 @@ export default function () {
               name="password"
               id="password"
               value={loginForm.password}
+              required
               onChange={(e) =>
                 setLoginForm({ ...loginForm, password: e.target.value })
               }
@@ -60,7 +79,7 @@ export default function () {
             </button>
           </div>
         </form>
-        <div>
+        <div className="flex flex-center flex-wrap align-center">
           <span className="fg-lighter">Don't have an account ?</span>
           <Link className="link link-primary" to="/auth/signup">
             Create a new Account
