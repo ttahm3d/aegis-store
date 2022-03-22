@@ -8,11 +8,22 @@ export default function () {
     password: "",
   });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // handle dispatch here
+
+    setLoginForm((loginForm) => ({
+      ...loginForm,
+      email: "",
+      password: "",
+    }));
+  };
+
   return (
     <div className="main-container">
       <div className={styles.form__container}>
         <div className={styles.form__title}>Login</div>
-        <form className={styles.form__wrapper}>
+        <form className={styles.form__wrapper} onSubmit={handleSubmit}>
           <div className={styles.form__item}>
             <label htmlFor="email" className={styles.form__label}>
               Email
