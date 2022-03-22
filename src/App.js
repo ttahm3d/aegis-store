@@ -1,15 +1,18 @@
 import { BrowserRouter } from "react-router-dom";
 import styled from "styled-components";
 import { Footer, Header } from "./components";
+import { ProductsProvider } from "./context/products/Context";
 import Router from "./router/Router";
 
 export default function () {
   return (
     <BrowserRouter>
       <Page>
-        <Header />
-        <Router />
-        <Footer />
+        <ProductsProvider>
+          <Header />
+          <Router />
+          <Footer />
+        </ProductsProvider>
       </Page>
     </BrowserRouter>
   );

@@ -30,3 +30,13 @@ h6 {
 .shadow {
   box-shadow: 0 0 4px hsl(var(--bg-400));
 }
+
+input[type="radio"],
+input[type="checkbox"],
+input[type="range"] {
+  accent-color: hsl(var(--primary-dark));
+}
+
+.sidebar-section:not(:last-child) {
+  border-bottom: 1px solid hsl(var(--bg-400));
+}
