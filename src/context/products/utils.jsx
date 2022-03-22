@@ -39,7 +39,7 @@ const filterOutOutOfStockProducts = (state, products) =>
 
 const showFastDeliveryProducts = (state, products) =>
   state.fastDelivery
-    ? products.filter((product) => product.aegisAssured === true)
+    ? products.filter((product) => product.aegisAssured)
     : products;
 
 const getResultantProducts =
