@@ -4,6 +4,8 @@ import styles from "./Signup.module.css";
 export default function () {
   const [signupForm, setSignupForm] = useState({
     fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     contact: "",
@@ -20,11 +22,26 @@ export default function () {
             </label>
             <input
               type="text"
-              name="full_name"
-              id="full_name"
-              value={signupForm.fullName}
+              name="firstName"
+              id="firstName"
+              value={signupForm.firstName}
               onChange={(e) =>
-                setSignupForm({ ...signupForm, fullName: e.target.value })
+                setSignupForm({ ...signupForm, firstName: e.target.value })
+              }
+              className={styles.form__input}
+            />
+          </div>
+          <div className={styles.form__item}>
+            <label htmlFor="full_name" className={styles.form__label}>
+              Full Name
+            </label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              value={signupForm.lastName}
+              onChange={(e) =>
+                setSignupForm({ ...signupForm, lastName: e.target.value })
               }
               className={styles.form__input}
             />
