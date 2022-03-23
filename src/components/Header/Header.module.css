@@ -47,9 +47,13 @@
   cursor: pointer;
 }
 
+.avatar {
+  padding: 0.25rem;
+}
+
 .dropdown {
   position: absolute;
-  top: 120%;
+  top: 100%;
   padding: 0;
   background-color: hsla(var(--bg-700), 0.4);
   border: 1px solid hsl(var(--bg-500));

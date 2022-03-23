@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 import styles from "./Header.module.css";
 import Logo from "../../assets/AegisStore.svg";
-import Avatar from "../../assets/avatar-user.svg";
 import { useScreenWidth } from "../../hooks/";
 import { useAuth } from "../../context/auth";
 
@@ -70,14 +69,8 @@ export default function () {
                 <li
                   onClick={() => setShowDropdown((s) => !s)}
                   className={styles.usermenu}>
-                  <div class="avatar">
-                    <img
-                      src={Avatar}
-                      class="avatar"
-                      width={20}
-                      height={20}
-                      alt="avatar"
-                    />
+                  <div className={styles.avatar}>
+                    <AiOutlineUser size={30} />
                   </div>
                   <ul
                     style={{ display: showDropdown ? "block" : "none" }}
