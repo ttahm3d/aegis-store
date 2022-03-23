@@ -1,15 +1,32 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import styles from "./Header.module.css";
 import Logo from "../../assets/AegisStore.svg";
+import Avatar from "../../assets/avatar-user.svg";
 import { useScreenWidth } from "../../hooks/";
+import { useAuth } from "../../context/auth";
 
 export default function () {
   const [showSidebar, setShowSidebar] = useState(false);
   const [width] = useScreenWidth();
+  const navigate = useNavigate();
+  const { authState, authDispatch } = useAuth();
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const closeSidebar = () => setShowSidebar(false);
+
+  const handleLogout = () => {
+    authDispatch({
+      type: "LOGOUT",
+    });
+    try {
+      localStorage.removeItem("user-token");
+    } catch (e) {
+      console.error("Could not logout!!");
+    }
+    navigate("/");
+  };
 
   return (
     <header className={`${styles.header}`}>
@@ -49,14 +66,38 @@ export default function () {
                   Cart
                 </Link>
               </li>
-              <li className="nav-list-item">
-                <Link
-                  className="btn btn-accent"
-                  to="/auth/login"
-                  onClick={() => closeSidebar()}>
-                  Login
-                </Link>
-              </li>
+              {authState?.isLoggedIn ? (
+                <li
+                  onClick={() => setShowDropdown((s) => !s)}
+                  className={styles.usermenu}>
+                  <div class="avatar">
+                    <img
+                      src={Avatar}
+                      class="avatar"
+                      width={20}
+                      height={20}
+                      alt="avatar"
+                    />
+                  </div>
+                  <ul
+                    style={{ display: showDropdown ? "block" : "none" }}
+                    className={styles.dropdown}>
+                    <li>
+                      <Link to="/user">Profile</Link>
+                    </li>
+                    <li onClick={handleLogout}>Logout</li>
+                  </ul>
+                </li>
+              ) : (
+                <li className="nav-list-item">
+                  <Link
+                    className="btn btn-accent"
+                    to="/auth/login"
+                    onClick={() => closeSidebar()}>
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </nav>
