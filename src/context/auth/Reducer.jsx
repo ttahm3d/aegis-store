@@ -3,7 +3,13 @@ const authReducer = (state, { type, payload }) => {
     case "LOGIN":
       return {
         ...state,
-        isLoggedIn: true,
+        isLoggedIn: localStorage.getItem("user-token") ? true : false,
+        user: payload,
+      };
+    case "SIGNUP":
+      return {
+        ...state,
+        isLoggedIn: localStorage.getItem("user-token") ? true : false,
         user: payload,
       };
     case "LOGOUT":
