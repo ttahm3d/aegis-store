@@ -30,6 +30,19 @@ export default function () {
     navigate("/products");
   };
 
+  const loginWithTestCreds = async () => {
+    const { data } = await axios.post("/api/auth/login", {
+      email: "testuser@gmail.com",
+      password: "testuser",
+    });
+    setUserToken(data.encodedToken);
+    authDispatch({
+      type: "LOGIN",
+      payload: data?.user,
+    });
+    navigate("/products");
+  };
+
   console.log(authState);
 
   return (
@@ -75,7 +88,13 @@ export default function () {
             </button>
           </div>
         </form>
-        <div className="flex flex-center flex-wrap align-center">
+        <div className="flex flex-center flex-column flex-wrap align-center">
+          <button
+            className="btn btn-secondary"
+            style={{ marginTop: "1rem" }}
+            onClick={loginWithTestCreds}>
+            Login with Test Creds
+          </button>
           <span className="fg-lighter">Don't have an account ?</span>
           <Link className="link link-primary" to="/auth/signup">
             Create a new Account
