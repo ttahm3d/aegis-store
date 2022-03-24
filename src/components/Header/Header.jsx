@@ -27,6 +27,8 @@ export default function () {
     navigate("/");
   };
 
+  console.log(authState?.user.firstName);
+
   return (
     <header className={`${styles.header}`}>
       <div className="main-container">
@@ -69,9 +71,8 @@ export default function () {
                 <li
                   onClick={() => setShowDropdown((s) => !s)}
                   className={styles.usermenu}>
-                  <div className={styles.avatar}>
-                    <AiOutlineUser size={30} />
-                  </div>
+                  {authState?.user.firstName}&nbsp;
+                  <AiOutlineUser size={20} />
                   <ul
                     style={{ display: showDropdown ? "block" : "none" }}
                     className={styles.dropdown}>

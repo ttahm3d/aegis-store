@@ -45,6 +45,8 @@
 .usermenu {
   position: relative;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .avatar {
