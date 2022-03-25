@@ -11,17 +11,11 @@ export default function () {
     password: "",
   });
   const navigate = useNavigate();
-  const [_, setUserToken] = useLocalStorage("user-token");
-  const { authState, authDispatch } = useAuth();
+  const { handleUserLogin, loginWithTestCredentials } = useAuth();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const { data } = await axios.post("/api/auth/login", loginForm);
-    setUserToken(data.encodedToken);
-    authDispatch({
-      type: "LOGIN",
-      payload: data?.user,
-    });
+    handleUserLogin(loginForm);
     setLoginForm((loginForm) => ({
       ...loginForm,
       email: "",
@@ -31,19 +25,9 @@ export default function () {
   };
 
   const loginWithTestCreds = async () => {
-    const { data } = await axios.post("/api/auth/login", {
-      email: "testuser@gmail.com",
-      password: "testuser",
-    });
-    setUserToken(data.encodedToken);
-    authDispatch({
-      type: "LOGIN",
-      payload: data?.user,
-    });
+    loginWithTestCredentials();
     navigate("/products");
   };
-
-  console.log(authState);
 
   return (
     <div className="main-container">

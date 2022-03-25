@@ -10,20 +10,13 @@ export default function () {
   const [showSidebar, setShowSidebar] = useState(false);
   const [width] = useScreenWidth();
   const navigate = useNavigate();
-  const { authState, authDispatch } = useAuth();
+  const { authState, handleUserLogout } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
 
   const closeSidebar = () => setShowSidebar(false);
 
   const handleLogout = () => {
-    authDispatch({
-      type: "LOGOUT",
-    });
-    try {
-      localStorage.removeItem("user-token");
-    } catch (e) {
-      console.error("Could not logout!!");
-    }
+    handleUserLogout();
     navigate("/");
   };
 

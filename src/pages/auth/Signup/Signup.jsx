@@ -13,24 +13,13 @@ export default function () {
     password: "",
     contact: "",
   });
-  const { authState, authDispatch } = useAuth();
+  const { handleUserSignup } = useAuth();
   const navigate = useNavigate();
   // const [_, setUserToken] = useLocalStorage("user-token")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const { status, data } = await axios.post("/api/auth/signup", signupForm);
-      if (status === 201) {
-        authDispatch({
-          type: "SIGNUP",
-          payload: data?.user,
-        });
-        navigate("/");
-      }
-    } catch (e) {
-      console.log(e);
-    }
+    handleUserSignup(signupForm);
     setSignupForm({
       firstName: "",
       lastName: "",
@@ -38,9 +27,8 @@ export default function () {
       password: "",
       contact: "",
     });
+    navigate("/products");
   };
-
-  console.log(authState);
 
   return (
     <div className="main-container">
