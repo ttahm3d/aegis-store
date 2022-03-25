@@ -18,8 +18,6 @@ export default function () {
     fetchData();
   }, []);
 
-  console.log(categories);
-
   return (
     <section className={`${styles.categories}`}>
       <div className="main-container">
