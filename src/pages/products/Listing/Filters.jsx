@@ -70,37 +70,81 @@ export default function () {
           <div className="input-group-hz">
             <input
               type="radio"
-              id="sort-low-to-high"
-              name="sortBy"
+              id="sort-low-to-high-price"
+              name="sortByPrice"
               value="low-to-high"
-              checked={state.sortBy === "low-to-high"}
+              checked={state.sortBy === "low-to-high-price"}
               onChange={(e) => {
                 dispatch({
-                  type: "SORT_BY",
+                  type: "SORT_BY_PRICE",
                   payload: e.target.value,
                 });
               }}
             />
-            <label className={styles.sidebar__label} htmlFor="sort-low-to-high">
+            <label
+              className={styles.sidebar__label}
+              htmlFor="sort-low-to-high-price">
               Price &mdash; Low to high
             </label>
           </div>
           <div className="input-group-hz">
             <input
               type="radio"
-              id="sort-high-to-low"
-              name="sortBy"
+              id="sort-high-to-low-price"
+              name="sortByPrice"
               value="high-to-low"
-              checked={state.sortBy === "high-to-low"}
+              checked={state.sortBy === "high-to-low-price"}
               onChange={(e) => {
                 dispatch({
-                  type: "SORT_BY",
+                  type: "SORT_BY_PRICE",
                   payload: e.target.value,
                 });
               }}
             />
-            <label className={styles.sidebar__label} htmlFor="sort-high-to-low">
+            <label
+              className={styles.sidebar__label}
+              htmlFor="sort-high-to-low-price">
               Price &mdash; High to low
+            </label>
+          </div>
+          <div className="input-group-hz">
+            <input
+              type="radio"
+              id="sort-low-to-high-ratings"
+              name="sortByRatings"
+              value="low-to-high"
+              checked={state.sortBy === "low-to-high-ratings"}
+              onChange={(e) => {
+                dispatch({
+                  type: "SORT_BY_RATINGS",
+                  payload: e.target.value,
+                });
+              }}
+            />
+            <label
+              className={styles.sidebar__label}
+              htmlFor="sort-low-to-high-ratings">
+              Ratings &mdash; Low to high
+            </label>
+          </div>
+          <div className="input-group-hz">
+            <input
+              type="radio"
+              id="sort-high-to-low-ratings"
+              name="sortByRatings"
+              value="high-to-low"
+              checked={state.sortBy === "high-to-low-ratings"}
+              onChange={(e) => {
+                dispatch({
+                  type: "SORT_BY_RATINGS",
+                  payload: e.target.value,
+                });
+              }}
+            />
+            <label
+              className={styles.sidebar__label}
+              htmlFor="sort-high-to-low-ratings">
+              Ratings &mdash; High to low
             </label>
           </div>
         </div>
