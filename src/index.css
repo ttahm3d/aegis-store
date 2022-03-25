@@ -40,3 +40,12 @@ input[type="range"] {
 .sidebar-section:not(:last-child) {
   border-bottom: 1px solid hsl(var(--bg-400));
 }
+
+.header-active {
+  font-weight: 600;
+  border-bottom: 1px solid black;
+}
+
+.header-inactive {
+  color: hsla(var(--font-600), 0.9);
+}

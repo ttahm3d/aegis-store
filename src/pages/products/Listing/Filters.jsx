@@ -10,7 +10,7 @@ import { useScreenWidth } from "../../../hooks";
 
 export default function () {
   const { state, dispatch } = useProducts();
-  const [collapse, setCollapse] = useState(false);
+  const [collapse, setCollapse] = useState(true);
   const [width] = useScreenWidth();
   const optionsList = [
     {

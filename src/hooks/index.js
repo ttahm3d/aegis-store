@@ -1,3 +1,4 @@
 import useScreenWidth from "./useScreenWidth";
+import useLocalStorage from "./useLocalStorage";
 
-export { useScreenWidth };
+export { useScreenWidth, useLocalStorage };
