@@ -1,8 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 import { useAuth } from "../../../context/auth";
 import styles from "./Signup.module.css";
-import { useLocalStorage } from "../../../hooks";
 import { useNavigate } from "react-router-dom";
 
 export default function () {
@@ -15,7 +13,6 @@ export default function () {
   });
   const { handleUserSignup } = useAuth();
   const navigate = useNavigate();
-  // const [_, setUserToken] = useLocalStorage("user-token")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
