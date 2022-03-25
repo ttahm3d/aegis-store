@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 import styles from "./Header.module.css";
 import Logo from "../../assets/AegisStore.svg";
@@ -27,8 +27,6 @@ export default function () {
     navigate("/");
   };
 
-  console.log(authState?.user.firstName);
-
   return (
     <header className={`${styles.header}`}>
       <div className="main-container">
@@ -53,25 +51,40 @@ export default function () {
                     : "translateX(-100%)",
               }}>
               <li className="nav-list-item">
-                <Link to="/products" onClick={() => closeSidebar()}>
+                <NavLink
+                  to="/products"
+                  className={({ isActive }) =>
+                    isActive ? "header-active" : "header-inactive"
+                  }
+                  onClick={() => closeSidebar()}>
                   Products
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-list-item">
-                <Link to="/wishlist" onClick={() => closeSidebar()}>
+                <NavLink
+                  to="/wishlist"
+                  className={({ isActive }) =>
+                    isActive ? "header-active" : "header-inactive"
+                  }
+                  onClick={() => closeSidebar()}>
                   Wishlist
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-list-item">
-                <Link to="/cart" onClick={() => closeSidebar()}>
+                <NavLink
+                  to="/cart"
+                  className={({ isActive }) =>
+                    isActive ? "header-active" : "header-inactive"
+                  }
+                  onClick={() => closeSidebar()}>
                   Cart
-                </Link>
+                </NavLink>
               </li>
               {authState?.isLoggedIn ? (
                 <li
                   onClick={() => setShowDropdown((s) => !s)}
                   className={styles.usermenu}>
-                  {authState?.user.firstName}&nbsp;
+                  {authState?.user.firstName} {authState?.user.lastName}&nbsp;
                   <AiOutlineUser size={20} />
                   <ul
                     style={{ display: showDropdown ? "block" : "none" }}
