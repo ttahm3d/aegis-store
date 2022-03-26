@@ -1,3 +1,18 @@
+.sidebar {
+  position: sticky;
+  top: 0;
+  background-color: hsl(var(--bg-700));
+  z-index: 2;
+}
+
+.sidebar__container {
+  background-color: hsl(var(--bg-700));
+  transition: 0.4s ease all;
+  overflow: hidden auto;
+  padding: 1rem;
+  border: 1px solid hsl(var(--bg-600), 0.34);
+}
+
 .sidebar__title {
   font-size: 1.2rem;
   font-weight: 600;
@@ -28,15 +43,6 @@
   padding: 0.5rem 0;
 }
 
-.sidebar {
-  position: sticky;
-  top: 0;
-  padding: 1rem 1rem 3rem;
-  background-color: hsl(var(--bg-700));
-  backdrop-filter: blur(5rem);
-  z-index: 2;
-}
-
 @media screen and (min-width: 65em) {
   .sidebar__collapse__btn {
     display: none;
@@ -44,8 +50,14 @@
 
   .sidebar {
     overflow: hidden auto;
+    padding: 1rem 1rem 3rem;
     top: 20vh;
     height: 70vh;
+  }
+
+  .sidebar__container {
+    height: calc(100vh - 130px) !important;
+    overflow: hidden;
   }
 
   .sidebar::-webkit-scrollbar {

@@ -10,7 +10,7 @@ import { useScreenWidth } from "../../../hooks";
 
 export default function () {
   const { state, dispatch } = useProducts();
-  const [collapse, setCollapse] = useState(true);
+  const [collapse, setCollapse] = useState(false);
   const [width] = useScreenWidth();
   const optionsList = [
     {
@@ -35,8 +35,6 @@ export default function () {
     },
   ];
 
-  console.log(state);
-
   const handleCategories = (event) => {
     const { checked, value } = event.target;
     if (checked) {
@@ -44,8 +42,6 @@ export default function () {
     }
     return { type: "REMOVE_CATEGORY_FROM_CATEGORIES", payload: value };
   };
-
-  //
 
   return (
     <aside className={styles.sidebar}>
@@ -59,14 +55,14 @@ export default function () {
         <button
           className={styles.sidebar__collapse__btn}
           onClick={() => setCollapse((c) => !c)}>
-          {collapse ? <AiOutlineArrowDown /> : <AiOutlineArrowUp />}
+          {!collapse ? <AiOutlineArrowDown /> : <AiOutlineArrowUp />}
         </button>
       </div>
       <section
         style={{
-          display: collapse && width < 1040 ? "none" : "block",
-          transition: "0.4s ease all",
-        }}>
+          height: collapse ? "45vh" : "0px",
+        }}
+        className={styles.sidebar__container}>
         <div className="sidebar-section">
           <div className={styles.sidebar__section__heading}>Sort By</div>
           <div className={styles.sortby__heading}>Price</div>
