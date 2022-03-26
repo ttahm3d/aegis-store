@@ -1,13 +1,30 @@
-const sortProducts = (state, products) => {
+const sortProductsByPrice = (state, products) => {
   const sortedProducts = [...products];
-  switch (state.sortBy) {
-    case "low-to-high":
+  switch (state.sortByPrice) {
+    case "low-to-high-price":
+      console.log("test");
       return sortedProducts.sort(
         (prodA, prodB) => Number(prodA.price) - Number(prodB.price)
       );
-    case "high-to-low":
+    case "high-to-low-price":
       return sortedProducts.sort(
         (prodA, prodB) => Number(prodB.price) - Number(prodA.price)
+      );
+    default:
+      return products;
+  }
+};
+
+const sortProductByRatings = (state, products) => {
+  const sortedProducts = [...products];
+  switch (state.sortByRating) {
+    case "low-to-high-rating":
+      return sortedProducts.sort(
+        (prodA, prodB) => Number(prodA.rating) - Number(prodB.rating)
+      );
+    case "high-to-low-rating":
+      return sortedProducts.sort(
+        (prodA, prodB) => Number(prodB.rating) - Number(prodA.rating)
       );
     default:
       return products;
@@ -48,7 +65,8 @@ const getResultantProducts =
     filters.reduce((filter, curFn) => curFn(state, filter), products);
 
 export {
-  sortProducts,
+  sortProductsByPrice,
+  sortProductByRatings,
   filterProductsByCategory,
   filterProductsWithMinPrice,
   filterByRating,

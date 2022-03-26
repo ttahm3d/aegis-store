@@ -1,7 +1,9 @@
 const productsReducer = (state, { type, payload }) => {
   switch (type) {
-    case "SORT_BY":
-      return { ...state, sortBy: payload };
+    case "SORT_BY_PRICE":
+      return { ...state, sortByPrice: payload };
+    case "SORT_BY_RATING":
+      return { ...state, sortByRating: payload };
     case "ADD_CATEGORY_TO_CATEGORIES":
       return { ...state, categories: [...state.categories, payload] };
     case "REMOVE_CATEGORY_FROM_CATEGORIES":
@@ -19,7 +21,8 @@ const productsReducer = (state, { type, payload }) => {
       return { ...state, fastDelivery: payload };
     case "RESET":
       return {
-        sortBy: "",
+        sortByPrice: "",
+        sortByRating: "",
         categories: [],
         minPrice: 0,
         rating: 0,

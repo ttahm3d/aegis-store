@@ -9,7 +9,8 @@ import { productsReducer } from "./Reducer";
 import axios from "axios";
 import {
   getResultantProducts,
-  sortProducts,
+  sortProductsByPrice,
+  sortProductByRatings,
   filterProductsByCategory,
   filterProductsWithMinPrice,
   filterByRating,
@@ -18,7 +19,8 @@ import {
 } from "./utils";
 
 const initialState = {
-  sortBy: "",
+  sortByPrice: "",
+  sortByRating: "",
   categories: [],
   minPrice: 0,
   rating: 0,
@@ -48,7 +50,8 @@ const ProductsProvider = ({ children }) => {
 
   const productsToShow = getResultantProducts(
     state,
-    sortProducts,
+    sortProductsByPrice,
+    sortProductByRatings,
     filterProductsByCategory,
     filterProductsWithMinPrice,
     filterOutOutOfStockProducts,

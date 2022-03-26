@@ -23,6 +23,11 @@
   border: 2px solid hsl(var(--bg-600), 0.34);
 }
 
+.sortby__heading {
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+}
+
 .sidebar {
   position: sticky;
   top: 0;
