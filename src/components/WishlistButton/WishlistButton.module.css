@@ -9,12 +9,13 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  background-color: hsla(var(--bg-700), 1);
 }
 
 .wishlist__circle:hover {
-  background-color: hsla(var(--bg-600), 0.8);
+  background-color: hsla(var(--red-500), 0.2);
 }
 
 .wishlist__circle:active {
-  background-color: hsla(var(--bg-500), 0.8);
+  background-color: hsla(var(--red-500), 0.5);
 }

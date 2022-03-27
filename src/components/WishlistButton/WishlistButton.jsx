@@ -14,7 +14,7 @@ export default function (props) {
       {isWishlisted ? (
         <AiFillHeart fill="red" />
       ) : (
-        <AiOutlineHeart fill="hsla(var(--font-500), 0.45)" />
+        <AiOutlineHeart fill="hsla(var(--red-500), 0.45)" />
       )}
     </div>
   );
