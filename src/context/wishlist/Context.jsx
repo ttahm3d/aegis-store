@@ -35,20 +35,18 @@ const WishlistProvider = ({ children }) => {
   }, []);
 
   const addToWishlist = async (product) => {
-    const res = await axios.post("/api/user/wishlist", headerConfig, {
-      product,
+    const res = await axios.post(
+      "/api/user/wishlist",
+      {
+        product,
+      },
+      headerConfig
+    );
+    wishlistDispatch({
+      type: "ADD_TO_WISHLIST",
+      payload: product,
     });
-    if (res.status === 201) {
-      console.log("test");
-    }
   };
-
-  // useEffect(() => {
-  //   wishlistDispatch({
-  //     type: "GET_WISHLIST",
-  //     payload: response?.data?.wishlist,
-  //   });
-  // }, []);
 
   return (
     <WishlistContext.Provider

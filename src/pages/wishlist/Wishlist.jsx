@@ -3,7 +3,9 @@ import { useWishlist } from "../../context/wishlist";
 export default function () {
   const { wishlist } = useWishlist();
 
-  console.log("wishlist", wishlist);
-
-  return <div className="main-container">Wishlist</div>;
+  return (
+    <div className="main-container">
+      {wishlist.length === 0 ? "no items to show" : "wishlist cards"}
+    </div>
+  );
 }
