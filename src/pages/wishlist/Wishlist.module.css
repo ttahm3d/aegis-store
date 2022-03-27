@@ -1,0 +1,41 @@
+.wishlist__container {
+  padding: 3rem 0;
+}
+
+.wishlist__cards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+.wishlist__card {
+  padding: 1rem;
+}
+
+.wishlist__name {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.wishlist__price {
+  font-family: var(--font-Lato);
+  font-weight: 500;
+}
+
+.wishlist__buttons__container {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wishlist__btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.wishlist__image {
+  object-fit: contain;
+  aspect-ratio: 3/4;
+}
