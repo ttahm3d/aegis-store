@@ -61,10 +61,10 @@ export default function ({ product }) {
           </div>
         </div>
       ) : null}
-      <div className={styles.wishlist__container}>
+      <div className={styles.wishlist__btn}>
         <WishlistButton
           onClick={() => addToWishlist(product)}
-          wishlisted={wishlisted.toString()}
+          wishlisted={wishlisted ? 1 : 0}
         />
       </div>
     </div>

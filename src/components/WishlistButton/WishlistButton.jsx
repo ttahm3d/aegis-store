@@ -9,9 +9,9 @@ export default function (props) {
       {...props}
       className={styles.wishlist__circle}
       style={{
-        backgroundColor: wishlisted === "true" && "hsla(var(--red-300))",
+        backgroundColor: wishlisted === 1 && "hsla(var(--red-300))",
       }}>
-      {wishlisted === "true" ? (
+      {wishlisted === 1 ? (
         <AiFillHeart fill="red" />
       ) : (
         <AiOutlineHeart fill="hsla(var(--red-500), 0.45)" />
