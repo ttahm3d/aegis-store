@@ -22,7 +22,7 @@ const WishlistProvider = ({ children }) => {
         const res = await axios.get("/api/user/wishlist", headerConfig);
         if (res.status === 200) {
           wishlistDispatch({
-            type: "GET_WISHLIST",
+            type: "SET_WISHLIST",
             payload: res?.data?.wishlist,
           });
         }
@@ -30,7 +30,6 @@ const WishlistProvider = ({ children }) => {
         console.error(e);
       }
     }
-
     fetchWishlist();
   }, []);
 
@@ -42,10 +41,28 @@ const WishlistProvider = ({ children }) => {
       },
       headerConfig
     );
-    wishlistDispatch({
-      type: "ADD_TO_WISHLIST",
-      payload: product,
-    });
+    if (wishlistState.wishlist.some((item) => item._id === product._id)) {
+      removeFromWishlist(product);
+    }
+    if (res.status === 201) {
+      wishlistDispatch({
+        type: "SET_WISHLIST",
+        payload: res?.data?.wishlist,
+      });
+    }
+  };
+
+  const removeFromWishlist = async (product) => {
+    const res = await axios.delete(
+      `/api/user/wishlist/${product._id}`,
+      headerConfig
+    );
+    if (res.status === 200) {
+      wishlistDispatch({
+        type: "SET_WISHLIST",
+        payload: res?.data?.wishlist,
+      });
+    }
   };
 
   return (
@@ -54,6 +71,7 @@ const WishlistProvider = ({ children }) => {
         wishlist: wishlistState.wishlist,
         wishlistDispatch,
         addToWishlist,
+        removeFromWishlist,
       }}>
       {children}
     </WishlistContext.Provider>

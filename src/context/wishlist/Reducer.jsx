@@ -7,7 +7,7 @@ const wishlistReducer = (state, { type, payload }) => {
           ? state.wishlist.filter((item) => item._id !== payload._id)
           : [...state.wishlist, payload],
       };
-    case "GET_WISHLIST":
+    case "SET_WISHLIST":
       return {
         ...state,
         wishlist: payload,
