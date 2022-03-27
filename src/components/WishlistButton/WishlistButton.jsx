@@ -1,8 +1,6 @@
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import styles from "./WishlistButton.module.css";
 
-// expects a boolean prop that can be controlled outside component
-
 export default function (props) {
   const { wishlisted } = props;
 
