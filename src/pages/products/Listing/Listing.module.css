@@ -14,13 +14,9 @@
 
 .products__container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   gap: 2rem;
   background-color: inherit;
-}
-
-.product__card {
-  height: max-content;
 }
 
 .image__container {
@@ -89,7 +85,7 @@
   justify-content: center;
 }
 
-.wishlist__container {
+.wishlist__btn {
   position: absolute;
   top: 1rem;
   right: 1rem;
