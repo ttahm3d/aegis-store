@@ -6,16 +6,18 @@ import { authReducer, useState } from "./Reducer";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [authState, authDispatch] = useReducer(authReducer, {
-    isLoggedIn: false,
-    user: {},
-  });
-
   const [userToken, setUserToken] = useLocalStorage("user-token");
+  const [userData, setUserData] = useLocalStorage("user-data");
+
+  const [authState, authDispatch] = useReducer(authReducer, {
+    isLoggedIn: userToken,
+    user: userData,
+  });
 
   const handleUserLogin = async (loginForm) => {
     const { data } = await axios.post("/api/auth/login", loginForm);
     setUserToken(data.encodedToken);
+    setUserData(data?.user);
     authDispatch({
       type: "LOGIN",
       payload: data?.user,
@@ -28,6 +30,7 @@ const AuthProvider = ({ children }) => {
       password: "testuser",
     });
     setUserToken(data.encodedToken);
+    setUserData(data?.user);
     authDispatch({
       type: "LOGIN",
       payload: data?.user,
@@ -40,6 +43,7 @@ const AuthProvider = ({ children }) => {
     });
     try {
       localStorage.removeItem("user-token");
+      localStorage.removeItem("user-data");
     } catch (e) {
       console.error("Could not logout!!");
     }
