@@ -23,7 +23,7 @@ const WishlistProvider = ({ children }) => {
         const res = await axios.get("/api/user/wishlist", headerConfig);
         if (res.status === 200) {
           wishlistDispatch({
-            type: "SET_WISHLIST",
+            type: "GET_WISHLIST",
             payload: res?.data?.wishlist,
           });
         }
@@ -48,7 +48,7 @@ const WishlistProvider = ({ children }) => {
         );
         if (res.status === 201) {
           wishlistDispatch({
-            type: "SET_WISHLIST",
+            type: "ADD_TO_WISHLIST",
             payload: res?.data?.wishlist,
           });
           Toast({
@@ -77,7 +77,7 @@ const WishlistProvider = ({ children }) => {
           message: `${product.name} has been removed from wishlist`,
         });
         wishlistDispatch({
-          type: "SET_WISHLIST",
+          type: "REMOVE_FROM_WISHLIST",
           payload: res?.data?.wishlist,
         });
       }
