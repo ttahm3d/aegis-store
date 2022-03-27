@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useReducer, createContext } from "react";
+import { Toast } from "../../components";
 import { useLocalStorage } from "../../hooks";
 import { wishlistReducer } from "./Reducer";
 
@@ -34,33 +35,56 @@ const WishlistProvider = ({ children }) => {
   }, []);
 
   const addToWishlist = async (product) => {
-    const res = await axios.post(
-      "/api/user/wishlist",
-      {
-        product,
-      },
-      headerConfig
-    );
     if (wishlistState.wishlist.some((item) => item._id === product._id)) {
       removeFromWishlist(product);
-    }
-    if (res.status === 201) {
-      wishlistDispatch({
-        type: "SET_WISHLIST",
-        payload: res?.data?.wishlist,
-      });
+    } else {
+      try {
+        const res = await axios.post(
+          "/api/user/wishlist",
+          {
+            product,
+          },
+          headerConfig
+        );
+        if (res.status === 201) {
+          wishlistDispatch({
+            type: "SET_WISHLIST",
+            payload: res?.data?.wishlist,
+          });
+          Toast({
+            type: "info",
+            message: `${product.name} has been added to wishlist`,
+          });
+        }
+      } catch (e) {
+        Toast({
+          type: "error",
+          message: `${product.name} could not be added to wishlist. Try again`,
+        });
+      }
     }
   };
 
   const removeFromWishlist = async (product) => {
-    const res = await axios.delete(
-      `/api/user/wishlist/${product._id}`,
-      headerConfig
-    );
-    if (res.status === 200) {
-      wishlistDispatch({
-        type: "SET_WISHLIST",
-        payload: res?.data?.wishlist,
+    try {
+      const res = await axios.delete(
+        `/api/user/wishlist/${product._id}`,
+        headerConfig
+      );
+      if (res.status === 200) {
+        Toast({
+          type: "warning",
+          message: `${product.name} has been removed from wishlist`,
+        });
+        wishlistDispatch({
+          type: "SET_WISHLIST",
+          payload: res?.data?.wishlist,
+        });
+      }
+    } catch (e) {
+      Toast({
+        type: "error",
+        message: `${product.name} could not removed from wishlist. Try again`,
       });
     }
   };

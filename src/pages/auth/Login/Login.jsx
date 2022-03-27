@@ -9,7 +9,7 @@ export default function () {
     password: "",
   });
   const navigate = useNavigate();
-  const { handleUserLogin, loginWithTestCredentials } = useAuth();
+  const { handleUserLogin } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +23,10 @@ export default function () {
   };
 
   const loginWithTestCreds = async () => {
-    loginWithTestCredentials();
+    handleUserLogin({
+      email: "testuser@gmail.com",
+      password: "testuser",
+    });
     navigate("/products");
   };
 
