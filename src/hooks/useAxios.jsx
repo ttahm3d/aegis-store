@@ -1,23 +1,28 @@
-// import { useState, useEffect } from "react";
-// import axios from "axios";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-// export default function (apiUrl, method = "GET", postData) {
-//   const [response, setResponse] = useState([]);
-//   const [error, setError] = useState(null);
-//   const [isLoading, setIsLoading] = useState(false);
+const useAxios = ({ apiUrl, method, body = null, headers = null }) => {
+  const [response, setResponse] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-//   const performXHRActivity = async () => {
-//     try {
-//       if (method === "p") {
-//         const res = await axios.get(apiUrl);
-//         setResponse(res)
-//       }
-//     } catch (e) {
-//     } finally {
-//     }
-//   };
+  useEffect(() => {
+    const performXHRActivity = async () => {
+      try {
+        const response = await axios[method](apiUrl, headers, body);
+        setResponse(response);
+      } catch (e) {
+        console.log("test");
+        setError(e);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-//   useEffect(() => {}, []);
+    performXHRActivity();
+  }, [apiUrl, method, body]);
 
-//   return { response, error, isLoading };
-// }
+  return { response, error, isLoading };
+};
+
+export default useAxios;
