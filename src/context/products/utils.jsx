@@ -4,11 +4,13 @@ const sortProductsByPrice = (state, products) => {
     case "low-to-high-price":
       console.log("test");
       return sortedProducts.sort(
-        (prodA, prodB) => Number(prodA.price) - Number(prodB.price)
+        (prodA, prodB) =>
+          Number(prodA.sellingPrice) - Number(prodB.sellingPrice)
       );
     case "high-to-low-price":
       return sortedProducts.sort(
-        (prodA, prodB) => Number(prodB.price) - Number(prodA.price)
+        (prodA, prodB) =>
+          Number(prodB.sellingPrice) - Number(prodA.sellingPrice)
       );
     default:
       return products;
@@ -47,7 +49,7 @@ const filterProductsByCategory = (state, products) => {
 };
 
 const filterProductsWithMinPrice = (state, products) =>
-  products.filter((product) => product.price >= state.minPrice);
+  products.filter((product) => product.sellingPrice >= state.minPrice);
 
 const filterOutOutOfStockProducts = (state, products) =>
   state.showOnlyInStock

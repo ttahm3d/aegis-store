@@ -10,7 +10,8 @@ export default function ({ product }) {
     _id,
     title,
     name,
-    price,
+    sellingPrice,
+    actualPrice,
     imageUrl,
     discount,
     aegisAssured,
@@ -19,7 +20,6 @@ export default function ({ product }) {
   } = product;
   const { wishlist, addToWishlist } = useWishlist();
   const { addToCart } = useCart();
-  const discountedPrice = Number(price) - Number(price) * (discount / 100);
 
   const wishlisted = wishlist.some((item) => item._id === product._id);
 
@@ -46,10 +46,10 @@ export default function ({ product }) {
         </div>
         <div className={`${styles.product__pricing}`}>
           <div className={`${styles.product__selling__price}`}>
-            &#8377;&nbsp;{discountedPrice.toFixed(2)}
+            &#8377;&nbsp;{sellingPrice}
           </div>
           <div className={`${styles.product__actual__price}`}>
-            &#8377;&nbsp;{Number(price).toFixed(2)}
+            &#8377;&nbsp;{actualPrice}
           </div>
         </div>
         <div>
