@@ -2,39 +2,37 @@ import { createContext, useContext, useReducer } from "react";
 import axios from "axios";
 import { useLocalStorage } from "../../hooks";
 import { authReducer, useState } from "./Reducer";
+import { Toast } from "../../components";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [userToken, setUserToken] = useLocalStorage("user-token");
   const [userData, setUserData] = useLocalStorage("user-data");
-
   const [authState, authDispatch] = useReducer(authReducer, {
     isLoggedIn: userToken,
     user: userData,
   });
 
   const handleUserLogin = async (loginForm) => {
-    const { data } = await axios.post("/api/auth/login", loginForm);
-    setUserToken(data.encodedToken);
-    setUserData(data?.user);
-    authDispatch({
-      type: "LOGIN",
-      payload: data?.user,
-    });
-  };
-
-  const loginWithTestCredentials = async () => {
-    const { data } = await axios.post("/api/auth/login", {
-      email: "testuser@gmail.com",
-      password: "testuser",
-    });
-    setUserToken(data.encodedToken);
-    setUserData(data?.user);
-    authDispatch({
-      type: "LOGIN",
-      payload: data?.user,
-    });
+    try {
+      const response = await axios.post("/api/auth/login", loginForm);
+      if (response.status === 200) {
+        Toast({ message: "You have successsfully logged in", type: "success" });
+        setUserToken(response?.data.encodedToken);
+        setUserData(response?.data?.user);
+        authDispatch({
+          type: "LOGIN",
+          payload: response?.data?.user,
+        });
+      }
+    } catch (e) {
+      console.error(e);
+      Toast({
+        message: "Invalid credentials. Please try again.",
+        type: "error",
+      });
+    }
   };
 
   const handleUserLogout = async () => {
@@ -44,8 +42,12 @@ const AuthProvider = ({ children }) => {
     try {
       localStorage.removeItem("user-token");
       localStorage.removeItem("user-data");
+      Toast({ message: "Logout successful!!", type: "success" });
     } catch (e) {
-      console.error("Could not logout!!");
+      Toast({
+        message: "Could not log you out. Please try again.",
+        type: "error",
+      });
     }
   };
 
@@ -53,14 +55,23 @@ const AuthProvider = ({ children }) => {
     try {
       const { status, data } = await axios.post("/api/auth/signup", signupForm);
       if (status === 201) {
+        setUserToken(data.encodedToken);
+        setUserData(data?.user);
         authDispatch({
           type: "SIGNUP",
           payload: data?.user,
         });
+        Toast({
+          message: "Welcome!! You have successsfully signed up.",
+          type: "success",
+        });
         navigate("/");
       }
     } catch (e) {
-      console.log(e);
+      Toast({
+        message: "There was an issue in signup. Please try again",
+        type: "error",
+      });
     }
   };
 
@@ -70,7 +81,6 @@ const AuthProvider = ({ children }) => {
         authState,
         authDispatch,
         handleUserLogin,
-        loginWithTestCredentials,
         handleUserLogout,
         handleUserSignup,
       }}>

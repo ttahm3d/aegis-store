@@ -2,9 +2,11 @@ import { WishlistButton } from "../../../components";
 import { FaRunning } from "react-icons/fa";
 import Rating from "../../../components/Rating/Rating";
 import styles from "./Listing.module.css";
+import { useWishlist } from "../../../context/wishlist";
 
-export default function (props) {
+export default function ({ product }) {
   const {
+    _id,
     title,
     name,
     price,
@@ -13,9 +15,11 @@ export default function (props) {
     aegisAssured,
     count,
     rating,
-  } = props;
-
+  } = product;
+  const { wishlist, addToWishlist } = useWishlist();
   const discountedPrice = Number(price) - Number(price) * (discount / 100);
+
+  const wishlisted = wishlist.some((item) => item._id === product._id);
 
   return (
     <div className={`card shadow ${styles.product__card}`}>
@@ -57,8 +61,11 @@ export default function (props) {
           </div>
         </div>
       ) : null}
-      <div className={styles.wishlist__container}>
-        <WishlistButton />
+      <div className={styles.wishlist__btn}>
+        <WishlistButton
+          onClick={() => addToWishlist(product)}
+          wishlisted={wishlisted ? 1 : 0}
+        />
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ export default function () {
           <>
             <div className={`${styles.products__container}`}>
               {products?.map((product) => (
-                <Product key={product._id} {...product} />
+                <Product key={product._id} product={product} />
               ))}
             </div>
           </>

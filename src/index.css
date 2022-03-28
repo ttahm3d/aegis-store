@@ -23,7 +23,7 @@ h6 {
 }
 
 .main-container {
-  width: min(calc(90vw - 2rem), 80em);
+  width: min(calc(95vw - 2rem), 90em);
   margin-inline: auto;
 }
 
