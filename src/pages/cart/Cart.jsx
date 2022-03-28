@@ -8,14 +8,17 @@ export default function () {
   return (
     <div className="main-container">
       <div className={styles.cart__container}>
-        {cart.length === 0 ? (
+        {/* {cart.length === 0 ? (
           <Empty
             title={"Your Wishlist is empty"}
             message="Checkout the products and wishlist the ones you want !!"
           />
-        ) : (
-          <div className={styles.cart__cards}></div>
-        )}
+        ) : ( */}
+        <div className={styles.cart__cards__pricing__container}>
+          <div>cards</div>
+          <div>pricing</div>
+        </div>
+        {/* )} */}
       </div>
     </div>
   );

@@ -1,0 +1,16 @@
+.cart__cards__pricing__container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 35em) {
+  .cart__cards__pricing__container {
+    grid-template-columns: 2fr 2fr;
+  }
+}
+
+@media screen and (min-width: 57.5em) {
+  .cart__cards__pricing__container {
+    grid-template-columns: 3fr 2fr;
+  }
+}
