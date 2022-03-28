@@ -8,7 +8,7 @@ const cartReducer = (state, { type, payload }) => {
       return {
         ...state,
         cartItems: payload,
-        cartSize: payload?.length,
+        cartSize: payload.reduce((acc, cur) => (acc += cur.qty), 0),
         cartTotalAmount: payload.reduce(
           (acc, cur) => (acc += cur.sellingPrice * cur.qty),
           0
