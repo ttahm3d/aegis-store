@@ -39,7 +39,7 @@ export default function () {
               className={styles.navlist}
               style={{
                 transform:
-                  showSidebar || width >= 560
+                  showSidebar || width >= 720
                     ? "translateX(0%)"
                     : "translateX(-100%)",
               }}>
