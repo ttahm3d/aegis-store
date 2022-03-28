@@ -4,7 +4,7 @@ import { useWishlist } from "../../context/wishlist";
 import { useCart } from "../../context/cart";
 
 export default function ({ wishlistItem }) {
-  const { title, name, sellingPrice, imageUrl } = wishlistItem;
+  const { title, name, sellingPrice, imageUrl, count } = wishlistItem;
   const { removeFromWishlist } = useWishlist();
 
   const { addToCart } = useCart();
@@ -36,6 +36,13 @@ export default function ({ wishlistItem }) {
           onClick={() => removeFromWishlist(wishlistItem)}
         />
       </div>
+      {count === 0 ? (
+        <div className={styles.wishlist__card__overlay}>
+          <div className={styles.wishlist__card__overlay__outofstock}>
+            <>Out of Stock</>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
