@@ -49,30 +49,32 @@
   }
 
   .sidebar {
-    overflow: hidden auto;
-    padding: 1rem 1rem 3rem;
-    top: 20vh;
-    height: 70vh;
+    overflow: hidden;
+    top: 0;
   }
 
   .sidebar__container {
-    height: calc(100vh - 130px) !important;
-    overflow: hidden;
+    position: sticky;
+    top: 0;
+    padding: 0rem 1rem 3rem;
+    margin-top: 1rem;
+    height: calc(100vh - 20vh) !important;
+    overflow: hidden auto;
   }
 
-  .sidebar::-webkit-scrollbar {
+  .sidebar__container::-webkit-scrollbar {
     width: 0.75rem;
   }
 
-  .sidebar::-webkit-scrollbar-track {
+  .sidebar__container::-webkit-scrollbar-track {
     background: hsla(var(--accent), 0.2);
   }
 
-  .sidebar::-webkit-scrollbar-thumb {
+  .sidebar__container::-webkit-scrollbar-thumb {
     background: hsla(var(--accent), 0.36);
   }
 
-  .sidebar::-webkit-scrollbar-thumb:hover {
+  .sidebar__container::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--accent));
   }
 }

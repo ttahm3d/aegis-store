@@ -10,6 +10,8 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cartState, cartDispatch] = useReducer(cartReducer, {
     cartItems: [],
+    cartSize: 0,
+    cartTotalAmount: 0,
   });
 
   const { addToWishlist } = useWishlist();
@@ -31,7 +33,6 @@ const CartProvider = ({ children }) => {
             payload: res?.data?.cart,
           });
         }
-        console.log(res?.data?.cart);
       } catch (e) {
         console.error(e);
       }
@@ -144,15 +145,28 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const placeOrder = () => {
+    cartDispatch({
+      type: "RESET",
+    });
+    Toast({
+      type: "success",
+      message: "Hurray!!! Your order has been placed",
+    });
+  };
+
   return (
     <CartContext.Provider
       value={{
         cart: cartState.cartItems,
+        cartSize: cartState.cartSize,
+        total: cartState.cartTotalAmount,
         addToCart,
         removeFromCart,
         incrementQuantityOfItem,
         decrementQuantityOfItem,
         moveToWishlist,
+        placeOrder,
       }}>
       {children}
     </CartContext.Provider>

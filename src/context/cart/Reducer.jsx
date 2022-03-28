@@ -5,7 +5,22 @@ const cartReducer = (state, { type, payload }) => {
     case "INCREASE_QUANTITY":
     case "DECREASE_QUANTITY":
     case "REMOVE_FROM_CART":
-      return { ...state, cartItems: payload };
+      return {
+        ...state,
+        cartItems: payload,
+        cartSize: payload?.length,
+        cartTotalAmount: payload.reduce(
+          (acc, cur) => (acc += cur.sellingPrice * cur.qty),
+          0
+        ),
+      };
+    case "RESET":
+      return {
+        ...state,
+        cartItems: [],
+        cartSize: 0,
+        cartTotalAmount: 0,
+      };
     default:
       return state;
   }

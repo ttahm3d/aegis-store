@@ -105,6 +105,7 @@
 
 .pricing__container {
   padding: 1.5rem 1rem;
+  height: max-content;
 }
 
 .pricing__heading {
