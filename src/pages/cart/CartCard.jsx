@@ -2,15 +2,14 @@ import { useCart } from "../../context/cart";
 import styles from "./Cart.module.css";
 
 export default function ({ product }) {
-  const { name, title, imageUrl, price, discount, qty } = product;
+  const { name, title, imageUrl, sellingPrice, actualPrice, discount, qty } =
+    product;
   const {
     incrementQuantityOfItem,
     decrementQuantityOfItem,
     removeFromCart,
     moveToWishlist,
   } = useCart();
-
-  const discountedPrice = Number(price) - Number(price) * (discount / 100);
 
   return (
     <div className={`${styles.cart__card} shadow`}>
@@ -21,9 +20,9 @@ export default function ({ product }) {
         <div className={styles.cart__name}>{name}</div>
         <div className={styles.cart__price}>
           <div className={styles.cart__selling__price}>
-            &#8377;{discountedPrice}
+            &#8377;{sellingPrice}
           </div>
-          <div className={styles.cart__actual__price}>&#8377;{price}</div>
+          <div className={styles.cart__actual__price}>&#8377;{actualPrice}</div>
         </div>
         <div className={styles.cart__discount}>{discount} % off</div>
         <div className={styles.cart__quantity__container}>

@@ -3,7 +3,7 @@ import { WishlistButton } from "../../components";
 import { useWishlist } from "../../context/wishlist";
 
 export default function ({ wishlistItem }) {
-  const { title, name, price, imageUrl } = wishlistItem;
+  const { title, name, sellingPrice, imageUrl } = wishlistItem;
   const { removeFromWishlist } = useWishlist();
 
   return (
@@ -13,7 +13,7 @@ export default function ({ wishlistItem }) {
       </div>
       <div className={`${styles.wishlist__description}`}>
         <div className={`${styles.wishlist__name}`}>{name}</div>
-        <div className={`${styles.wishlist__price}`}>&#8377;{price}</div>
+        <div className={`${styles.wishlist__price}`}>&#8377;{sellingPrice}</div>
         <div className={`${styles.wishlist__buttons__container}`}>
           <button className="btn btn-primary">Move to Cart</button>
           <button
