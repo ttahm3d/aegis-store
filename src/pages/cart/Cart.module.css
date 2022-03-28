@@ -16,11 +16,14 @@
 
 .cart__card {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr;
 }
 
 .cart__image__container {
   background-color: hsla(var(--bg-600), 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cart__image {
@@ -37,7 +40,8 @@
   font-weight: 600;
 }
 
-.cart__price {
+.cart__price,
+.pricing__prices {
   font-family: var(--font-Lato);
   display: flex;
   gap: 1rem;
@@ -45,12 +49,14 @@
   align-items: baseline;
 }
 
-.cart__selling__price {
+.cart__selling__price,
+.pricing__selling__price {
   font-size: 1.2rem;
   letter-spacing: -1px;
 }
 
-.cart__actual__price {
+.cart__actual__price,
+.pricing__actual__price {
   font-size: 1.2rem;
   letter-spacing: -1px;
   color: hsla(var(--font-500), 0.7);
@@ -97,20 +103,67 @@
   gap: 1rem;
 }
 
-/* 
+.pricing__container {
+  padding: 1.5rem 1rem;
+}
+
+.pricing__heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+}
+
+.pricing__items {
+  margin: 0.5rem 0;
+  border-bottom: 1px solid hsla(var(--font-500), 0.4);
+}
+
+.pricing__item,
+.pricing__shipping,
+.pricing__discount,
+.pricing__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pricing__item__name {
+  font-weight: 500;
+  color: hsla(var(--font-600), 0.7);
+}
+
+.pricing__prices {
+  align-items: center;
+}
+
+.pricing__price {
+  font-family: var(--font-Lato);
+}
+
+.pricing__shipping,
+.pricing__discount {
+  border-bottom: 1px solid hsla(var(--font-500), 0.4);
+  margin: 0.5rem 0;
+  padding-bottom: 0.5rem;
+}
+
+.pricing__total {
+  padding: 1rem 0;
+}
+
+.pricing__total__name {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
 @media screen and (min-width: 35em) {
-  .cart__cards__pricing__container {
-    grid-template-columns: 2fr 1fr;
+  .cart__card {
+    grid-template-columns: 1fr 2fr;
   }
-} */
+}
 
-/* @media screen and (min-width: 57.5em) {
-  .cart__cards__pricing__container {
-    grid-template-columns: 3fr 2fr;
-  }
-} */
-
-@media screen and (min-width: 47.5em) {
+@media screen and (min-width: 55em) {
   .cart__cards__pricing__container {
     grid-template-columns: 3fr 2fr;
   }
