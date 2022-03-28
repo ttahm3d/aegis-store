@@ -7,6 +7,7 @@ import { WishlistProvider } from "./context/wishlist";
 import { ToastContainer } from "react-toastify";
 
 import Router from "./router/Router";
+import { CartProvider } from "./context/cart";
 
 export default function () {
   return (
@@ -15,10 +16,12 @@ export default function () {
         <ProductsProvider>
           <AuthProvider>
             <WishlistProvider>
-              <Header />
-              <Router />
-              <Footer />
-              <ToastContainer />
+              <CartProvider>
+                <Header />
+                <Router />
+                <Footer />
+                <ToastContainer />
+              </CartProvider>
             </WishlistProvider>
           </AuthProvider>
         </ProductsProvider>
