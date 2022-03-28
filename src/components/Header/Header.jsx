@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { Link, useNavigate, NavLink } from "react-router-dom";
-import { AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
+import {
+  AiOutlineMenu,
+  AiFillShop,
+  AiFillHeart,
+  AiFillShopping,
+} from "react-icons/ai";
+import { FaUserCircle } from "react-icons/fa";
 import styles from "./Header.module.css";
 import Logo from "../../assets/AegisStore.svg";
 import { useScreenWidth } from "../../hooks/";
 import { useAuth } from "../../context/auth";
+import { useCart } from "../../context/cart";
+import { useWishlist } from "../../context/wishlist";
+import Badge from "../Badge/Badge";
 
 export default function () {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -19,6 +28,36 @@ export default function () {
     handleUserLogout();
     navigate("/");
   };
+
+  const { isLoggedIn } = useAuth();
+  const { cartSize } = useCart();
+  const { wishlistSize } = useWishlist();
+
+  console.log(wishlistSize);
+
+  const navbarItems = [
+    {
+      id: "1",
+      icon: <AiFillShop />,
+      text: "Products",
+      count: null,
+      pathToNavigate: "/products",
+    },
+    {
+      id: "2",
+      icon: <AiFillHeart />,
+      text: "Wishlist",
+      count: wishlistSize,
+      pathToNavigate: "/wishlist",
+    },
+    {
+      id: "3",
+      icon: <AiFillShopping />,
+      text: "Cart",
+      count: cartSize,
+      pathToNavigate: "/cart",
+    },
+  ];
 
   return (
     <header className={`${styles.header}`}>
@@ -43,42 +82,33 @@ export default function () {
                     ? "translateX(0%)"
                     : "translateX(-100%)",
               }}>
-              <li className="nav-list-item">
-                <NavLink
-                  to="/products"
-                  className={({ isActive }) =>
-                    isActive ? "header-active" : "header-inactive"
-                  }
-                  onClick={() => closeSidebar()}>
-                  Products
-                </NavLink>
-              </li>
-              <li className="nav-list-item">
-                <NavLink
-                  to="/wishlist"
-                  className={({ isActive }) =>
-                    isActive ? "header-active" : "header-inactive"
-                  }
-                  onClick={() => closeSidebar()}>
-                  Wishlist
-                </NavLink>
-              </li>
-              <li className="nav-list-item">
-                <NavLink
-                  to="/cart"
-                  className={({ isActive }) =>
-                    isActive ? "header-active" : "header-inactive"
-                  }
-                  onClick={() => closeSidebar()}>
-                  Cart
-                </NavLink>
-              </li>
+              {navbarItems.map((navItem) => (
+                <li className="nav-list-item" key={navItem.id}>
+                  <NavLink
+                    to={navItem.pathToNavigate}
+                    className={({ isActive }) =>
+                      isActive ? "header-active" : "header-inactive"
+                    }
+                    onClick={() => closeSidebar()}>
+                    <Badge
+                      icon={navItem.icon}
+                      text={navItem.text}
+                      number={navItem.count}
+                    />
+                  </NavLink>
+                </li>
+              ))}
               {authState?.isLoggedIn ? (
                 <li
                   onClick={() => setShowDropdown((s) => !s)}
                   className={styles.usermenu}>
-                  {authState?.user.firstName} {authState?.user.lastName}&nbsp;
-                  <AiOutlineUser size={20} />
+                  {/* {authState?.user.lastName}&nbsp;
+                  <FaUserCircle size={20} /> */}
+                  <Badge
+                    icon={<FaUserCircle />}
+                    text={`${authState?.user.firstName} ${authState?.user.lastName}`}
+                    number={null}
+                  />
                   <ul
                     style={{ display: showDropdown ? "block" : "none" }}
                     className={styles.dropdown}>

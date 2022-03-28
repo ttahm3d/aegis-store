@@ -9,6 +9,7 @@ const WishlistContext = createContext();
 const WishlistProvider = ({ children }) => {
   const [wishlistState, wishlistDispatch] = useReducer(wishlistReducer, {
     wishlist: [],
+    wishlistSize: 0,
   });
   const [token] = useLocalStorage("user-token");
   const headerConfig = {
@@ -91,10 +92,13 @@ const WishlistProvider = ({ children }) => {
     }
   };
 
+  console.log(wishlistState);
+
   return (
     <WishlistContext.Provider
       value={{
         wishlist: wishlistState.wishlist,
+        wishlistSize: wishlistState.wishlistSize,
         wishlistDispatch,
         addToWishlist,
         removeFromWishlist,
