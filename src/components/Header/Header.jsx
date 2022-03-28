@@ -29,11 +29,8 @@ export default function () {
     navigate("/");
   };
 
-  const { isLoggedIn } = useAuth();
   const { cartSize } = useCart();
   const { wishlistSize } = useWishlist();
-
-  console.log(wishlistSize);
 
   const navbarItems = [
     {
