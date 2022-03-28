@@ -54,7 +54,6 @@ const CartProvider = ({ children }) => {
             type: "ADD_TO_CART",
             payload: res?.data?.cart,
           });
-          console.log(res);
           Toast({
             type: "success",
             message: `${product.name} has been added to cart`,

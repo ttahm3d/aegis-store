@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import HeroImage from "../../assets/HeroSection.svg";
 import styles from "./LandingPage.module.css";
 
 export default function () {
+  const navigate = useNavigate();
+
   return (
     <section className={styles.hero}>
       <div className="main-container">
@@ -12,7 +15,11 @@ export default function () {
               Dota 2 Merch and Gaming Accessories
             </div>
             <div className="pad-2-tb">
-              <button className="btn btn-primary">Shop Now</button>
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate("/products")}>
+                Shop Now
+              </button>
             </div>
           </div>
           <div className={styles.hero__image}>
