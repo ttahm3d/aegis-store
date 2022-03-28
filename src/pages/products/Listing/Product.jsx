@@ -3,6 +3,7 @@ import { FaRunning } from "react-icons/fa";
 import Rating from "../../../components/Rating/Rating";
 import styles from "./Listing.module.css";
 import { useWishlist } from "../../../context/wishlist";
+import { useCart } from "../../../context/cart";
 
 export default function ({ product }) {
   const {
@@ -17,6 +18,7 @@ export default function ({ product }) {
     rating,
   } = product;
   const { wishlist, addToWishlist } = useWishlist();
+  const { addToCart } = useCart();
   const discountedPrice = Number(price) - Number(price) * (discount / 100);
 
   const wishlisted = wishlist.some((item) => item._id === product._id);
@@ -51,7 +53,11 @@ export default function ({ product }) {
           </div>
         </div>
         <div>
-          <button className="btn btn-primary wd-100">Add to Cart</button>
+          <button
+            onClick={() => addToCart(product)}
+            className="btn btn-primary wd-100">
+            Add to Cart
+          </button>
         </div>
       </div>
       {count === 0 ? (
