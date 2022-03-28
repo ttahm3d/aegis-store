@@ -57,6 +57,7 @@ const WishlistProvider = ({ children }) => {
           });
         }
       } catch (e) {
+        console.error(e);
         Toast({
           type: "error",
           message: `${product.name} could not be added to wishlist. Try again`,
@@ -82,6 +83,7 @@ const WishlistProvider = ({ children }) => {
         });
       }
     } catch (e) {
+      console.error(e);
       Toast({
         type: "error",
         message: `${product.name} could not removed from wishlist. Try again`,
