@@ -3,13 +3,15 @@ import { FaRunning } from "react-icons/fa";
 import Rating from "../../../components/Rating/Rating";
 import styles from "./Listing.module.css";
 import { useWishlist } from "../../../context/wishlist";
+import { useCart } from "../../../context/cart";
 
 export default function ({ product }) {
   const {
     _id,
     title,
     name,
-    price,
+    sellingPrice,
+    actualPrice,
     imageUrl,
     discount,
     aegisAssured,
@@ -17,7 +19,7 @@ export default function ({ product }) {
     rating,
   } = product;
   const { wishlist, addToWishlist } = useWishlist();
-  const discountedPrice = Number(price) - Number(price) * (discount / 100);
+  const { addToCart } = useCart();
 
   const wishlisted = wishlist.some((item) => item._id === product._id);
 
@@ -44,14 +46,18 @@ export default function ({ product }) {
         </div>
         <div className={`${styles.product__pricing}`}>
           <div className={`${styles.product__selling__price}`}>
-            &#8377;&nbsp;{discountedPrice.toFixed(2)}
+            &#8377;&nbsp;{sellingPrice}
           </div>
           <div className={`${styles.product__actual__price}`}>
-            &#8377;&nbsp;{Number(price).toFixed(2)}
+            &#8377;&nbsp;{actualPrice}
           </div>
         </div>
         <div>
-          <button className="btn btn-primary wd-100">Add to Cart</button>
+          <button
+            onClick={() => addToCart(product)}
+            className="btn btn-primary wd-100">
+            Add to Cart
+          </button>
         </div>
       </div>
       {count === 0 ? (

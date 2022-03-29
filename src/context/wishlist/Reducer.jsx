@@ -6,6 +6,7 @@ const wishlistReducer = (state, { type, payload }) => {
       return {
         ...state,
         wishlist: payload,
+        wishlistSize: payload.length,
       };
     default:
       return state;

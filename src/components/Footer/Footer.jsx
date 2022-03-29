@@ -25,21 +25,21 @@ export default function () {
             </ul>
           </div>
           <div className="links-container">
-            <div className={styles.links__heading}>Connect with me</div>
+            <div className={styles.links__heading}>Other links</div>
             <ul className={`${styles.list}`}>
               <li className={styles.list__item}>
                 <a href="#" target="_blank" rel="noreferrer ">
-                  Personal Website
+                  Terms of service
                 </a>
               </li>
               <li className={styles.list__item}>
                 <a href="#" target="_blank" rel="noreferrer ">
-                  Blog
+                  Return policy
                 </a>
               </li>
               <li className={styles.list__item}>
                 <a href="#" target="_blank" rel="noreferrer ">
-                  Github
+                  Aegis Assured
                 </a>
               </li>
             </ul>

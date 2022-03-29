@@ -43,3 +43,21 @@
   object-fit: contain;
   aspect-ratio: 3/4;
 }
+
+.wishlist__card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsla(var(--font-700), 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wishlist__card__overlay__outofstock {
+  padding: 1rem;
+  background-color: hsla(var(--font-500), 0.75);
+  color: hsla(var(--bg-600), 0.85);
+}

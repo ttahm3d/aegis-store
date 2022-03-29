@@ -76,14 +76,13 @@
   background-color: hsla(var(--bg-600), 0.4);
 }
 
-@media screen and (max-width: 35em) {
+@media screen and (max-width: 45em) {
   .navlist {
     position: fixed;
     inset: 0 35% 0 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
-    /* background-color: hsla(var(--bg-600), 1); */
     padding: min(30vh, 5rem) 2rem;
     backdrop-filter: blur(4rem);
     transform: translateX(-100%);
