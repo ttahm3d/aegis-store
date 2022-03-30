@@ -79,7 +79,7 @@ const CartProvider = ({ children }) => {
           payload: res?.data?.cart,
         });
         Toast({
-          type: "success",
+          type: "info",
           message: `${product.name} has been removed from cart`,
         });
       }
@@ -111,7 +111,7 @@ const CartProvider = ({ children }) => {
           payload: res?.data?.cart,
         });
         Toast({
-          type: "success",
+          type: "warning",
           message: `${product.name}'s quantity increased by 1`,
         });
       }
@@ -140,7 +140,7 @@ const CartProvider = ({ children }) => {
             payload: res?.data?.cart,
           });
           Toast({
-            type: "success",
+            type: "info",
             message: `${product.name}'s quantity decreased by 1`,
           });
         }
