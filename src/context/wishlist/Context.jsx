@@ -36,39 +36,42 @@ const WishlistProvider = ({ children }) => {
   }, []);
 
   const addToWishlist = async (product) => {
-    if (wishlistState.wishlist.some((item) => item._id === product._id)) {
-      removeFromWishlist(product);
-    } else {
-      try {
-        const res = await axios.post(
-          "/api/user/wishlist",
-          {
-            product,
-          },
-          {
-            headers: {
-              authorization: JSON.parse(localStorage.getItem("user-token")),
+    if (isLoggedIn) {
+      if (wishlistState.wishlist.some((item) => item._id === product._id)) {
+        removeFromWishlist(product);
+      } else {
+        try {
+          const res = await axios.post(
+            "/api/user/wishlist",
+            {
+              product,
             },
+            {
+              headers: {
+                authorization: JSON.parse(localStorage.getItem("user-token")),
+              },
+            }
+          );
+          if (res.status === 201) {
+            wishlistDispatch({
+              type: "ADD_TO_WISHLIST",
+              payload: res?.data?.wishlist,
+            });
+            Toast({
+              type: "info",
+              message: `${product.name} has been added to wishlist`,
+            });
           }
-        );
-        if (res.status === 201) {
-          wishlistDispatch({
-            type: "ADD_TO_WISHLIST",
-            payload: res?.data?.wishlist,
-          });
+        } catch (e) {
+          console.error(e);
           Toast({
-            type: "info",
-            message: `${product.name} has been added to wishlist`,
+            type: "error",
+            message: `${product.name} could not be added to wishlist. Try again`,
           });
         }
-      } catch (e) {
-        console.error(e);
-        Toast({
-          type: "error",
-          message: `${product.name} could not be added to wishlist. Try again`,
-        });
       }
-    }
+    } else
+      Toast({ type: "error", message: "Please login to perform this action" });
   };
 
   const removeFromWishlist = async (product) => {

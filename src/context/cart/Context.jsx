@@ -40,37 +40,45 @@ const CartProvider = ({ children }) => {
   }, []);
 
   const addToCart = async (product) => {
-    if (cartState.cartItems.some((cartItem) => cartItem._id === product._id)) {
-      incrementQuantityOfItem(product);
-    } else {
-      try {
-        const res = await axios.post(
-          "/api/user/cart",
-          { product },
-          {
-            headers: {
-              authorization: JSON.parse(localStorage.getItem("user-token")),
-            },
+    if (isLoggedIn) {
+      if (
+        cartState.cartItems.some((cartItem) => cartItem._id === product._id)
+      ) {
+        incrementQuantityOfItem(product);
+      } else {
+        try {
+          const res = await axios.post(
+            "/api/user/cart",
+            { product },
+            {
+              headers: {
+                authorization: JSON.parse(localStorage.getItem("user-token")),
+              },
+            }
+          );
+          if (res.status === 201) {
+            cartDispatch({
+              type: "ADD_TO_CART",
+              payload: res?.data?.cart,
+            });
+            Toast({
+              type: "success",
+              message: `${product.name} has been added to cart`,
+            });
           }
-        );
-        if (res.status === 201) {
-          cartDispatch({
-            type: "ADD_TO_CART",
-            payload: res?.data?.cart,
-          });
+        } catch (e) {
+          console.error(e);
           Toast({
-            type: "success",
-            message: `${product.name} has been added to cart`,
+            type: "error",
+            message: "Something went wrong. Try again.",
           });
         }
-      } catch (e) {
-        console.error(e);
-        Toast({
-          type: "error",
-          message: "Something went wrong. Try again.",
-        });
       }
-    }
+    } else
+      Toast({
+        type: "error",
+        message: "Please login to perform this action",
+      });
   };
 
   const removeFromCart = async (product) => {
