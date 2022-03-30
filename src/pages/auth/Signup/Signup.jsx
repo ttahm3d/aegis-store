@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useAuth } from "../../../context/auth";
 import styles from "./Signup.module.css";
 import { useNavigate } from "react-router-dom";
+import { useDocumentTitle } from "../../../hooks";
 
 export default function () {
+  useDocumentTitle("Signup | Aeigs Store");
+
   const [signupForm, setSignupForm] = useState({
     firstName: "",
     lastName: "",

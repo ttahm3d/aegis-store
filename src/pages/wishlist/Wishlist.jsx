@@ -2,9 +2,12 @@ import { useWishlist } from "../../context/wishlist";
 import WishlistCard from "./WishlistCard";
 import styles from "./Wishlist.module.css";
 import Empty from "../../components/Empty/Empty";
+import { useDocumentTitle } from "../../hooks";
 
 export default function () {
   const { wishlist } = useWishlist();
+
+  useDocumentTitle("Wishlist | Aegis Store");
 
   return (
     <div className="main-container">

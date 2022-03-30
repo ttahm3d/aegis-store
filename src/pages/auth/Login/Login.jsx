@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import { useAuth } from "../../../context/auth";
+import { useDocumentTitle } from "../../../hooks";
 
 export default function () {
+  useDocumentTitle("Login | Aegis Store");
+
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",

@@ -2,9 +2,12 @@ import { useProducts } from "../../../context/products/Context";
 import styles from "./Listing.module.css";
 import Filters from "./Filters";
 import Product from "./Product";
+import { useDocumentTitle } from "../../../hooks";
 
 export default function () {
   const { products } = useProducts();
+
+  useDocumentTitle("Products | Aegis Store");
 
   return (
     <section className={styles.listing__container}>
