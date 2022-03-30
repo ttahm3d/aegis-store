@@ -16,7 +16,7 @@
 }
 
 .badge__text {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .badge__number {
@@ -35,14 +35,4 @@
   background-color: hsla(var(--primary), 0.29);
   color: hsla(var(--primary-dark), 1);
   border-radius: 50%;
-}
-
-@media screen and (min-width: 45em) {
-  .badge__icon {
-    font-size: 1.5rem;
-  }
-
-  .badge__text {
-    font-size: 14px;
-  }
 }
