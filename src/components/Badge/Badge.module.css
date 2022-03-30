@@ -23,16 +23,16 @@
   position: absolute;
   font-size: 0.75rem;
   font-weight: 600;
-  top: 0.25rem;
+  top: 0rem;
   right: 0.5rem;
-  min-width: 1.3rem;
+  min-width: 1.5rem;
   min-height: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5%;
   z-index: 2;
-  background-color: hsla(var(--primary), 0.35);
+  background-color: hsla(var(--primary), 0.29);
   color: hsla(var(--primary-dark), 1);
   border-radius: 50%;
 }
