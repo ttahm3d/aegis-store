@@ -20,6 +20,10 @@
   background-color: inherit;
 }
 
+.product__card {
+  height: fit-content;
+}
+
 .image__container {
   background-color: hsla(var(--bg-600), 0.35);
 }
