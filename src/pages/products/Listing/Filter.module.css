@@ -7,11 +7,9 @@
 }
 
 .sidebar__container {
-  background-color: hsl(var(--bg-700));
   transition: 0.4s ease all;
   overflow: hidden auto;
   padding: 1rem;
-  border: 1px solid hsl(var(--bg-600), 0.34);
 }
 
 .sidebar__title {

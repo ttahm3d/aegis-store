@@ -10,7 +10,7 @@ import { useScreenWidth } from "../../../hooks";
 
 export default function () {
   const { state, dispatch } = useProducts();
-  const [collapse, setCollapse] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [width] = useScreenWidth();
   const optionsList = [
     {
@@ -54,13 +54,14 @@ export default function () {
         </button>
         <button
           className={styles.sidebar__collapse__btn}
-          onClick={() => setCollapse((c) => !c)}>
-          {!collapse ? <AiOutlineArrowDown /> : <AiOutlineArrowUp />}
+          onClick={() => setShowSidebar((c) => !c)}>
+          {!showSidebar ? <AiOutlineArrowDown /> : <AiOutlineArrowUp />}
         </button>
       </div>
       <section
         style={{
-          height: collapse ? "45vh" : "0px",
+          height: showSidebar ? "45vh" : "0",
+          overflow: showSidebar ? "hidden auto" : "hidden",
         }}
         className={styles.sidebar__container}>
         <div className="sidebar-section">
