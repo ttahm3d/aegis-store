@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
   const [userToken, setUserToken] = useLocalStorage("user-token");
   const [userData, setUserData] = useLocalStorage("user-data");
   const [authState, authDispatch] = useReducer(authReducer, {
-    isLoggedIn: userToken,
+    isLoggedIn: false,
     user: userData,
   });
 

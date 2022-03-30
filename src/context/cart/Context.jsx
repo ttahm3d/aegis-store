@@ -16,13 +16,6 @@ const CartProvider = ({ children }) => {
 
   const { addToWishlist } = useWishlist();
 
-  const [token] = useLocalStorage("user-token");
-  const headerConfig = {
-    headers: {
-      authorization: token,
-    },
-  };
-
   useEffect(() => {
     (async () => {
       try {
@@ -47,7 +40,11 @@ const CartProvider = ({ children }) => {
         const res = await axios.post(
           "/api/user/cart",
           { product },
-          headerConfig
+          {
+            headers: {
+              authorization: JSON.parse(localStorage.getItem("user-token")),
+            },
+          }
         );
         if (res.status === 201) {
           cartDispatch({
@@ -71,10 +68,11 @@ const CartProvider = ({ children }) => {
 
   const removeFromCart = async (product) => {
     try {
-      const res = await axios.delete(
-        `/api/user/cart/${product._id}`,
-        headerConfig
-      );
+      const res = await axios.delete(`/api/user/cart/${product._id}`, {
+        headers: {
+          authorization: JSON.parse(localStorage.getItem("user-token")),
+        },
+      });
       if (res.status === 200) {
         cartDispatch({
           type: "REMOVE_FROM_CART",
@@ -101,7 +99,11 @@ const CartProvider = ({ children }) => {
       const res = await axios.post(
         `/api/user/cart/${product._id}`,
         { action: { type: "increment" } },
-        headerConfig
+        {
+          headers: {
+            authorization: JSON.parse(localStorage.getItem("user-token")),
+          },
+        }
       );
       if (res.status === 200) {
         cartDispatch({
@@ -126,7 +128,11 @@ const CartProvider = ({ children }) => {
         const res = await axios.post(
           `/api/user/cart/${product._id}`,
           { action: { type: "decrement" } },
-          headerConfig
+          {
+            headers: {
+              authorization: JSON.parse(localStorage.getItem("user-token")),
+            },
+          }
         );
         if (res.status === 200) {
           cartDispatch({

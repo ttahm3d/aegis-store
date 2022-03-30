@@ -11,12 +11,6 @@ const WishlistProvider = ({ children }) => {
     wishlist: [],
     wishlistSize: 0,
   });
-  const [token] = useLocalStorage("user-token");
-  const headerConfig = {
-    headers: {
-      authorization: token,
-    },
-  };
 
   useEffect(() => {
     async function fetchWishlist() {
@@ -45,7 +39,11 @@ const WishlistProvider = ({ children }) => {
           {
             product,
           },
-          headerConfig
+          {
+            headers: {
+              authorization: JSON.parse(localStorage.getItem("user-token")),
+            },
+          }
         );
         if (res.status === 201) {
           wishlistDispatch({
@@ -69,10 +67,11 @@ const WishlistProvider = ({ children }) => {
 
   const removeFromWishlist = async (product) => {
     try {
-      const res = await axios.delete(
-        `/api/user/wishlist/${product._id}`,
-        headerConfig
-      );
+      const res = await axios.delete(`/api/user/wishlist/${product._id}`, {
+        headers: {
+          authorization: JSON.parse(localStorage.getItem("user-token")),
+        },
+      });
       if (res.status === 200) {
         Toast({
           type: "warning",
