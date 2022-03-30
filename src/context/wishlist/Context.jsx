@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useReducer, createContext } from "react";
 import { Toast } from "../../components";
-import { useLocalStorage } from "../../hooks";
+import { useAuth } from "../auth";
 import { wishlistReducer } from "./Reducer";
 
 const WishlistContext = createContext();
@@ -12,10 +12,16 @@ const WishlistProvider = ({ children }) => {
     wishlistSize: 0,
   });
 
+  const { isLoggedIn } = useAuth();
+
   useEffect(() => {
     async function fetchWishlist() {
       try {
-        const res = await axios.get("/api/user/wishlist", headerConfig);
+        const res = await axios.get("/api/user/wishlist", {
+          headers: {
+            authorization: JSON.parse(localStorage.getItem("user-token")),
+          },
+        });
         if (res.status === 200) {
           wishlistDispatch({
             type: "GET_WISHLIST",
@@ -26,7 +32,7 @@ const WishlistProvider = ({ children }) => {
         console.error(e);
       }
     }
-    fetchWishlist();
+    if (isLoggedIn) fetchWishlist();
   }, []);
 
   const addToWishlist = async (product) => {
@@ -90,8 +96,6 @@ const WishlistProvider = ({ children }) => {
       });
     }
   };
-
-  console.log(wishlistState);
 
   return (
     <WishlistContext.Provider

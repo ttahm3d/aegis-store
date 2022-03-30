@@ -2,7 +2,6 @@ const sortProductsByPrice = (state, products) => {
   const sortedProducts = [...products];
   switch (state.sortByPrice) {
     case "low-to-high-price":
-      console.log("test");
       return sortedProducts.sort(
         (prodA, prodB) =>
           Number(prodA.sellingPrice) - Number(prodB.sellingPrice)

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useContext, useEffect, useReducer, createContext } from "react";
 import { Toast } from "../../components";
+import { useAuth } from "../auth";
 import { useWishlist } from "../wishlist/";
-import { useLocalStorage } from "../../hooks";
 import { cartReducer } from "./Reducer";
 
 const CartContext = createContext();
@@ -14,22 +14,29 @@ const CartProvider = ({ children }) => {
     cartTotalAmount: 0,
   });
 
+  const { isLoggedIn } = useAuth();
+
   const { addToWishlist } = useWishlist();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const res = await axios.get("/api/user/cart", headerConfig);
-        if (res.status === 200) {
-          cartDispatch({
-            type: "GET_CART_ITEMS",
-            payload: res?.data?.cart,
+    if (isLoggedIn)
+      (async () => {
+        try {
+          const res = await axios.get("/api/user/cart", {
+            headers: {
+              authorization: JSON.parse(localStorage.getItem("user-token")),
+            },
           });
+          if (res.status === 200) {
+            cartDispatch({
+              type: "GET_CART_ITEMS",
+              payload: res?.data?.cart,
+            });
+          }
+        } catch (e) {
+          console.error(e);
         }
-      } catch (e) {
-        console.error(e);
-      }
-    })();
+      })();
   }, []);
 
   const addToCart = async (product) => {
@@ -83,9 +90,8 @@ const CartProvider = ({ children }) => {
           message: `${product.name} has been removed from cart`,
         });
       }
-      console.log(res);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -116,7 +122,7 @@ const CartProvider = ({ children }) => {
         });
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -145,7 +151,7 @@ const CartProvider = ({ children }) => {
           });
         }
       } catch (e) {
-        console.log(e);
+        console.error(e);
       }
     }
   };
