@@ -31,7 +31,7 @@ export default function () {
   return (
     <section className={`${styles.categories}`}>
       <div className="main-container">
-        <h3 className="heading-2 text-center">Categories</h3>
+        <h3 className={styles.heading}>Categories</h3>
         <div className={styles.categories__container}>
           {categories.map(({ id, name, imageUrl, title }) => (
             <div
