@@ -10,7 +10,7 @@
 
 .hero__text__container {
   padding: 2rem 0;
-  font-family: var(--font-poppins);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
   align-self: center;
 }
 

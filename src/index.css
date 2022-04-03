@@ -4,7 +4,7 @@
 /* Overriding styles from component library */
 
 body {
-  font-family: var(--font-poppins);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
   background-color: hsla(var(--bg-700), 0.95);
 }
 
@@ -18,8 +18,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-Lato);
-  font-family: var(--font-poppins);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
 }
 
 .main-container {

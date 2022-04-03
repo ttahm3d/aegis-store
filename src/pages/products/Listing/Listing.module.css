@@ -59,7 +59,7 @@
 }
 
 .product__pricing {
-  font-family: var(--font-Lato);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
   display: flex;
   gap: 1rem;
   padding: 0.5rem 0;
