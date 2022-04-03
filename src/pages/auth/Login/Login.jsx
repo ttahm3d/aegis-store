@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import styles from "./Login.module.css";
 import { useAuth } from "../../../context/auth";
@@ -13,7 +14,8 @@ export default function () {
   });
   const location = useLocation();
   const path = location.state?.from?.pathname || "/";
-  console.log(path);
+  const [showPassword, setShowPassword] = useState(false);
+
   const { handleUserLogin } = useAuth();
 
   const handleSubmit = (e) => {
@@ -39,6 +41,10 @@ export default function () {
       email: "",
       password: "",
     }));
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword((s) => !s);
   };
 
   return (
@@ -67,16 +73,22 @@ export default function () {
               Password
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               id="password"
-              value={loginForm.password}
               required
+              aria-required
+              value={loginForm.password}
               onChange={(e) =>
                 setLoginForm({ ...loginForm, password: e.target.value })
               }
               className={styles.form__input}
             />
+            <button
+              className={styles.show__button}
+              onClick={toggleShowPassword}>
+              {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+            </button>
           </div>
           <div className={styles.form__item}>
             <button className="btn btn-primary" style={{ marginTop: "1rem" }}>
