@@ -43,6 +43,7 @@
 .categories__card {
   justify-content: flex-start;
   transition: 0.5s all linear;
+  cursor: pointer;
   align-items: center;
   background-color: hsla(var(--bg-700), 1);
 }
