@@ -99,11 +99,9 @@ export default function () {
                 <li
                   onClick={() => setShowDropdown((s) => !s)}
                   className={styles.usermenu}>
-                  {/* {authState?.user.lastName}&nbsp;
-                  <FaUserCircle size={20} /> */}
                   <Badge
                     icon={<FaUserCircle />}
-                    text={`${authState?.user.firstName} ${authState?.user.lastName}`}
+                    text={`${authState?.user.firstName}`}
                     number={null}
                   />
                   <ul
