@@ -1,11 +1,14 @@
 import Empty from "../../components/Empty/Empty";
 import { useCart } from "../../context/cart";
+import { useDocumentTitle } from "../../hooks";
 import styles from "./Cart.module.css";
 import CartCard from "./CartCard";
 import Pricing from "./Pricing";
 
 export default function () {
   const { cart } = useCart();
+
+  useDocumentTitle("Cart | Aegis Store");
 
   return (
     <div className="main-container">

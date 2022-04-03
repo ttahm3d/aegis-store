@@ -1,33 +1,50 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import styles from "./Login.module.css";
 import { useAuth } from "../../../context/auth";
+import { useDocumentTitle } from "../../../hooks";
 
 export default function () {
+  useDocumentTitle("Login | Aegis Store");
+
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.state?.from?.pathname || "/";
+  const [showPassword, setShowPassword] = useState(false);
+
   const { handleUserLogin } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleUserLogin(loginForm);
+    handleUserLogin(loginForm, path);
     setLoginForm((loginForm) => ({
       ...loginForm,
       email: "",
       password: "",
     }));
-    navigate("/products");
   };
 
   const loginWithTestCreds = async () => {
-    handleUserLogin({
-      email: "testuser@gmail.com",
-      password: "testuser",
-    });
-    navigate("/products");
+    handleUserLogin(
+      {
+        email: "tahirahmedt97@gmail.com",
+        password: "kolaveridha",
+      },
+      path
+    );
+    setLoginForm((loginForm) => ({
+      ...loginForm,
+      email: "",
+      password: "",
+    }));
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword((s) => !s);
   };
 
   return (
@@ -56,16 +73,22 @@ export default function () {
               Password
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               id="password"
-              value={loginForm.password}
               required
+              aria-required
+              value={loginForm.password}
               onChange={(e) =>
                 setLoginForm({ ...loginForm, password: e.target.value })
               }
               className={styles.form__input}
             />
+            <button
+              className={styles.show__button}
+              onClick={toggleShowPassword}>
+              {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+            </button>
           </div>
           <div className={styles.form__item}>
             <button className="btn btn-primary" style={{ marginTop: "1rem" }}>

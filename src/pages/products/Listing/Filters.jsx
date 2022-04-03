@@ -5,12 +5,13 @@ import {
   AiOutlineArrowDown,
   AiOutlineArrowUp,
 } from "react-icons/ai";
+import { ImEqualizer } from "react-icons/im";
 import styles from "./Filter.module.css";
 import { useScreenWidth } from "../../../hooks";
 
 export default function () {
   const { state, dispatch } = useProducts();
-  const [collapse, setCollapse] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [width] = useScreenWidth();
   const optionsList = [
     {
@@ -46,21 +47,27 @@ export default function () {
   return (
     <aside className={styles.sidebar}>
       <div className="flex justify-between align-center">
-        <div className={styles.sidebar__title}>Filters</div>
-        <button
-          className="btn btn-secondary"
+        <div className={styles.sidebar__title}>
+          <div>Filters</div>
+          <div className="flex flex-center">
+            <ImEqualizer />
+          </div>
+        </div>
+        <div
+          className={styles.reset}
           onClick={() => dispatch({ type: "RESET" })}>
-          Reset
-        </button>
+          Clear Filters
+        </div>
         <button
           className={styles.sidebar__collapse__btn}
-          onClick={() => setCollapse((c) => !c)}>
-          {!collapse ? <AiOutlineArrowDown /> : <AiOutlineArrowUp />}
+          onClick={() => setShowSidebar((c) => !c)}>
+          {!showSidebar ? <AiOutlineArrowDown /> : <AiOutlineArrowUp />}
         </button>
       </div>
       <section
         style={{
-          height: collapse ? "45vh" : "0px",
+          height: showSidebar ? "45vh" : "0",
+          overflow: showSidebar ? "hidden auto" : "hidden",
         }}
         className={styles.sidebar__container}>
         <div className="sidebar-section">

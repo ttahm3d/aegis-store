@@ -42,7 +42,7 @@ const ProductsProvider = ({ children }) => {
         const { data } = await axios.get("/api/products");
         setProducts(data?.products);
       } catch (e) {
-        console.log("error", e);
+        console.error("error", e);
       }
     }
     fetchData();

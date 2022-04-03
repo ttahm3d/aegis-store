@@ -22,6 +22,7 @@
   flex-direction: column;
   gap: 0.5rem;
   width: 100%;
+  position: relative;
 }
 
 .form__label {
@@ -50,4 +51,17 @@
   width: 90%;
   max-width: 25rem;
   margin: 0 auto;
+}
+
+.show__button {
+  position: absolute;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 0;
+  background-color: hsl(var(--bg-600));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  right: 0;
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useReducer, createContext } from "react";
 import { Toast } from "../../components";
-import { useLocalStorage } from "../../hooks";
+import { useAuth } from "../auth";
 import { wishlistReducer } from "./Reducer";
 
 const WishlistContext = createContext();
@@ -11,17 +11,17 @@ const WishlistProvider = ({ children }) => {
     wishlist: [],
     wishlistSize: 0,
   });
-  const [token] = useLocalStorage("user-token");
-  const headerConfig = {
-    headers: {
-      authorization: token,
-    },
-  };
+
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     async function fetchWishlist() {
       try {
-        const res = await axios.get("/api/user/wishlist", headerConfig);
+        const res = await axios.get("/api/user/wishlist", {
+          headers: {
+            authorization: JSON.parse(localStorage.getItem("user-token")),
+          },
+        });
         if (res.status === 200) {
           wishlistDispatch({
             type: "GET_WISHLIST",
@@ -32,47 +32,55 @@ const WishlistProvider = ({ children }) => {
         console.error(e);
       }
     }
-    fetchWishlist();
+    if (isLoggedIn) fetchWishlist();
   }, []);
 
   const addToWishlist = async (product) => {
-    if (wishlistState.wishlist.some((item) => item._id === product._id)) {
-      removeFromWishlist(product);
-    } else {
-      try {
-        const res = await axios.post(
-          "/api/user/wishlist",
-          {
-            product,
-          },
-          headerConfig
-        );
-        if (res.status === 201) {
-          wishlistDispatch({
-            type: "ADD_TO_WISHLIST",
-            payload: res?.data?.wishlist,
-          });
+    if (isLoggedIn) {
+      if (wishlistState.wishlist.some((item) => item._id === product._id)) {
+        removeFromWishlist(product);
+      } else {
+        try {
+          const res = await axios.post(
+            "/api/user/wishlist",
+            {
+              product,
+            },
+            {
+              headers: {
+                authorization: JSON.parse(localStorage.getItem("user-token")),
+              },
+            }
+          );
+          if (res.status === 201) {
+            wishlistDispatch({
+              type: "ADD_TO_WISHLIST",
+              payload: res?.data?.wishlist,
+            });
+            Toast({
+              type: "info",
+              message: `${product.name} has been added to wishlist`,
+            });
+          }
+        } catch (e) {
+          console.error(e);
           Toast({
-            type: "info",
-            message: `${product.name} has been added to wishlist`,
+            type: "error",
+            message: `${product.name} could not be added to wishlist. Try again`,
           });
         }
-      } catch (e) {
-        console.error(e);
-        Toast({
-          type: "error",
-          message: `${product.name} could not be added to wishlist. Try again`,
-        });
       }
-    }
+    } else
+      Toast({ type: "error", message: "Please login to perform this action" });
   };
 
   const removeFromWishlist = async (product) => {
     try {
-      const res = await axios.delete(
-        `/api/user/wishlist/${product._id}`,
-        headerConfig
-      );
+      const res = await axios.delete(`/api/user/wishlist/${product._id}`, {
+        headers: {
+          authorization: JSON.parse(localStorage.getItem("user-token")),
+        },
+      });
       if (res.status === 200) {
         Toast({
           type: "warning",
@@ -91,8 +99,6 @@ const WishlistProvider = ({ children }) => {
       });
     }
   };
-
-  console.log(wishlistState);
 
   return (
     <WishlistContext.Provider

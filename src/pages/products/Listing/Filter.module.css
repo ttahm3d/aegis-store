@@ -7,18 +7,27 @@
 }
 
 .sidebar__container {
-  background-color: hsl(var(--bg-700));
   transition: 0.4s ease all;
   overflow: hidden auto;
-  padding: 1rem;
-  border: 1px solid hsl(var(--bg-600), 0.34);
 }
 
 .sidebar__title {
   font-size: 1.2rem;
   font-weight: 600;
+  display: flex;
   text-transform: uppercase;
+  align-items: center;
+  gap: 1rem;
   color: hsla(var(--font-600), 0.8);
+}
+
+.reset {
+  border-bottom: 1px solid hsla(var(--font-700), 1);
+  cursor: pointer;
+}
+
+.reset:hover {
+  color: hsla(var(--font-500), 1);
 }
 
 .sidebar__section__heading {
@@ -49,17 +58,17 @@
     display: none;
   }
 
-  .sidebar {
-    overflow: hidden;
+  /* .sidebar {
+    overflow: hidden auto;
     top: 0;
-  }
+  } */
 
   .sidebar__container {
     position: sticky;
     top: 0;
-    padding: 0rem 1rem 3rem;
+    padding: 0rem 0rem 3rem;
     margin-top: 1rem;
-    height: calc(100vh - 20vh) !important;
+    height: 100% !important;
     overflow: hidden auto;
   }
 

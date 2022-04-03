@@ -12,7 +12,6 @@ const useAxios = ({ apiUrl, method, body = null, headers = null }) => {
         const response = await axios[method](apiUrl, headers, body);
         setResponse(response);
       } catch (e) {
-        console.log("test");
         setError(e);
       } finally {
         setIsLoading(false);

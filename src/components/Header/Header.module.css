@@ -79,12 +79,12 @@
 @media screen and (max-width: 45em) {
   .navlist {
     position: fixed;
-    inset: 0 35% 0 0;
+    inset: 0 60% 0 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
-    padding: min(30vh, 5rem) 2rem;
-    backdrop-filter: blur(4rem);
+    padding: 12rem 2rem 0;
+    background-color: hsla(var(--bg-600), 1);
     transform: translateX(-100%);
     transition: 0.2s transform linear;
   }

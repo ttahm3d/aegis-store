@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useAuth } from "../../../context/auth";
 import styles from "./Signup.module.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDocumentTitle } from "../../../hooks";
 
 export default function () {
+  useDocumentTitle("Signup | Aeigs Store");
+
   const [signupForm, setSignupForm] = useState({
     firstName: "",
     lastName: "",
@@ -11,12 +15,13 @@ export default function () {
     password: "",
     contact: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
   const { handleUserSignup } = useAuth();
-  const navigate = useNavigate();
-
+  const location = useLocation();
+  const path = location.state?.from?.pathname || "/";
   const handleSubmit = async (e) => {
     e.preventDefault();
-    handleUserSignup(signupForm);
+    handleUserSignup(signupForm, path);
     setSignupForm({
       firstName: "",
       lastName: "",
@@ -25,6 +30,10 @@ export default function () {
       contact: "",
     });
     navigate("/products");
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword((s) => !s);
   };
 
   return (
@@ -88,7 +97,7 @@ export default function () {
               Password
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               id="password"
               required
@@ -99,6 +108,11 @@ export default function () {
               }
               className={styles.form__input}
             />
+            <button
+              className={styles.show__button}
+              onClick={toggleShowPassword}>
+              {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+            </button>
           </div>
           <div className={styles.form__item}>
             <label htmlFor="contact" className={styles.form__label}>

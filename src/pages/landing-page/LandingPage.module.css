@@ -10,7 +10,7 @@
 
 .hero__text__container {
   padding: 2rem 0;
-  font-family: var(--font-poppins);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
   align-self: center;
 }
 
@@ -33,16 +33,24 @@
   padding: 2rem 0;
 }
 
+.heading {
+  font-size: 2.3rem;
+  text-align: center;
+}
+
 .categories__container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 1rem;
+  width: 80%;
+  margin-inline: auto;
   padding: 4rem 0;
 }
 
 .categories__card {
   justify-content: flex-start;
   transition: 0.5s all linear;
+  cursor: pointer;
   align-items: center;
   background-color: hsla(var(--bg-700), 1);
 }

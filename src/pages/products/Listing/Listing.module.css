@@ -20,6 +20,10 @@
   background-color: inherit;
 }
 
+.product__card {
+  height: fit-content;
+}
+
 .image__container {
   background-color: hsla(var(--bg-600), 0.35);
 }
@@ -55,7 +59,7 @@
 }
 
 .product__pricing {
-  font-family: var(--font-Lato);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
   display: flex;
   gap: 1rem;
   padding: 0.5rem 0;
@@ -65,6 +69,13 @@
 .product__selling__price {
   font-size: 1.2rem;
   letter-spacing: -1px;
+}
+
+.listing__info {
+  display: block;
+  padding: 1rem 0.5rem 1rem;
+  background-color: hsla(var(--bg-600), 0.85);
+  margin-bottom: 1rem;
 }
 
 .product__actual__price {
@@ -101,12 +112,5 @@
 @media screen and (min-width: 65em) {
   .listing {
     grid-template-columns: 1fr 4fr;
-  }
-
-  .products__info {
-    display: block;
-    padding: 1rem 0.5rem 1rem;
-    background-color: hsla(var(--bg-600), 0.85);
-    margin-bottom: 1rem;
   }
 }
