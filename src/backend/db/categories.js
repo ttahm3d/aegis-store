@@ -8,28 +8,28 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    name: "jerseys",
+    name: "jersey",
     title: "Jersey",
     imageUrl:
       "https://res.cloudinary.com/dut75albw/image/upload/v1647532664/AegisStore/categories/Jersey_lhixyy.png",
   },
   {
     _id: uuid(),
-    name: "hoodies",
+    name: "hoodie",
     title: "Hoodies",
     imageUrl:
       "https://res.cloudinary.com/dut75albw/image/upload/v1647577675/AegisStore/categories/Hoodie.png",
   },
   {
     _id: uuid(),
-    name: "keyboards",
+    name: "keyboard",
     title: "Keyboards",
     imageUrl:
       "https://res.cloudinary.com/dut75albw/image/upload/v1647532664/AegisStore/categories/Keyboard_gylnbg.png",
   },
   {
     _id: uuid(),
-    name: "chairs",
+    name: "chair",
     title: "Chairs",
     imageUrl:
       "https://res.cloudinary.com/dut75albw/image/upload/v1647532664/AegisStore/categories/Chair_zptitd.png",

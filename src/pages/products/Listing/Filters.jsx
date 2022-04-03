@@ -5,6 +5,7 @@ import {
   AiOutlineArrowDown,
   AiOutlineArrowUp,
 } from "react-icons/ai";
+import { ImEqualizer } from "react-icons/im";
 import styles from "./Filter.module.css";
 import { useScreenWidth } from "../../../hooks";
 
@@ -46,12 +47,17 @@ export default function () {
   return (
     <aside className={styles.sidebar}>
       <div className="flex justify-between align-center">
-        <div className={styles.sidebar__title}>Filters</div>
-        <button
-          className="btn btn-secondary"
+        <div className={styles.sidebar__title}>
+          <div>Filters</div>
+          <div className="flex flex-center">
+            <ImEqualizer />
+          </div>
+        </div>
+        <div
+          className={styles.reset}
           onClick={() => dispatch({ type: "RESET" })}>
-          Reset
-        </button>
+          Clear Filters
+        </div>
         <button
           className={styles.sidebar__collapse__btn}
           onClick={() => setShowSidebar((c) => !c)}>

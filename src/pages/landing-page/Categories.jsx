@@ -1,9 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from "./LandingPage.module.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useProducts } from "../../context/products/Context";
 
 export default function () {
   const [categories, setCategories] = useState([]);
+
+  const navigate = useNavigate();
+  const { dispatch } = useProducts();
 
   useEffect(() => {
     async function fetchData() {
@@ -18,13 +23,21 @@ export default function () {
     fetchData();
   }, []);
 
+  const handleNavigation = (categoryName) => {
+    dispatch({ type: "ADD_CATEGORY_TO_CATEGORIES", payload: categoryName });
+    navigate("/products");
+  };
+
   return (
     <section className={`${styles.categories}`}>
       <div className="main-container">
         <h3 className="heading-2 text-center">Categories</h3>
         <div className={styles.categories__container}>
           {categories.map(({ id, name, imageUrl, title }) => (
-            <div key={id} className={`card shadow ${styles.categories__card}`}>
+            <div
+              key={id}
+              className={`card shadow ${styles.categories__card}`}
+              onClick={() => handleNavigation(name)}>
               <div className={`card-image-container`}>
                 <img
                   src={imageUrl}
