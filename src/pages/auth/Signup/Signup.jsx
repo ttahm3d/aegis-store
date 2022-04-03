@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../../context/auth";
 import styles from "./Signup.module.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDocumentTitle } from "../../../hooks";
 
 export default function () {
@@ -15,11 +15,11 @@ export default function () {
     contact: "",
   });
   const { handleUserSignup } = useAuth();
-  const navigate = useNavigate();
-
+  const location = useLocation();
+  const path = location.state?.from?.pathname || "/";
   const handleSubmit = async (e) => {
     e.preventDefault();
-    handleUserSignup(signupForm);
+    handleUserSignup(signupForm, path);
     setSignupForm({
       firstName: "",
       lastName: "",

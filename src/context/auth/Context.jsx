@@ -1,8 +1,9 @@
 import { createContext, useContext, useReducer } from "react";
 import axios from "axios";
 import { useLocalStorage } from "../../hooks";
-import { authReducer, useState } from "./Reducer";
+import { authReducer } from "./Reducer";
 import { Toast } from "../../components";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -14,18 +15,22 @@ const AuthProvider = ({ children }) => {
     user: userData,
   });
 
-  const handleUserLogin = async (loginForm) => {
+  const navigate = useNavigate();
+
+  const handleUserLogin = async (loginForm, path) => {
+    console.log(path);
     try {
       const response = await axios.post("/api/auth/login", loginForm);
       if (response.status === 200) {
-        Toast({ message: "You have successsfully logged in", type: "success" });
         setUserToken(response?.data.encodedToken);
         setUserData(response?.data?.user);
+        Toast({ message: "You have successsfully logged in", type: "success" });
         authDispatch({
           type: "LOGIN",
           payload: response?.data?.user,
         });
       }
+      navigate(path, { replace: true });
     } catch (e) {
       console.error(e);
       Toast({
@@ -51,7 +56,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const handleUserSignup = async (signupForm) => {
+  const handleUserSignup = async (signupForm, path) => {
     try {
       const { status, data } = await axios.post("/api/auth/signup", signupForm);
       if (status === 201) {
@@ -65,9 +70,10 @@ const AuthProvider = ({ children }) => {
           message: "Welcome!! You have successsfully signed up.",
           type: "success",
         });
-        navigate("/");
+        navigate(path, { replace: true });
       }
     } catch (e) {
+      console.error(e);
       Toast({
         message: "There was an issue in signup. Please try again",
         type: "error",

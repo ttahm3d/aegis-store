@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import styles from "./Login.module.css";
 import { useAuth } from "../../../context/auth";
 import { useDocumentTitle } from "../../../hooks";
@@ -11,26 +11,34 @@ export default function () {
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.state?.from?.pathname || "/";
+  console.log(path);
   const { handleUserLogin } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleUserLogin(loginForm);
+    handleUserLogin(loginForm, path);
     setLoginForm((loginForm) => ({
       ...loginForm,
       email: "",
       password: "",
     }));
-    navigate("/products");
   };
 
   const loginWithTestCreds = async () => {
-    handleUserLogin({
-      email: "tahirahmedt97@gmail.com",
-      password: "kolaveridha",
-    });
-    navigate("/products");
+    handleUserLogin(
+      {
+        email: "tahirahmedt97@gmail.com",
+        password: "kolaveridha",
+      },
+      path
+    );
+    setLoginForm((loginForm) => ({
+      ...loginForm,
+      email: "",
+      password: "",
+    }));
   };
 
   return (
