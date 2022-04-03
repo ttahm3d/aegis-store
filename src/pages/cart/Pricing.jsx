@@ -30,7 +30,7 @@ export default function () {
       </div>
       <div className={styles.pricing__total}>
         <div className={styles.pricing__total__name}>Total</div>
-        <div className={styles.pricing__price}>&#8377;{total}</div>
+        <div className={styles.pricing__price}>&#8377;{total + 1500}</div>
       </div>
       <div className="flex flex-column">
         <button onClick={() => placeOrder()} className="btn btn-accent">
