@@ -69,7 +69,7 @@ export default function ({ product }) {
       ) : null}
       <div className={styles.wishlist__btn}>
         <WishlistButton
-          onClick={() => addToWishlist(product)}
+          onClick={() => addToWishlist(product, "product")}
           wishlisted={wishlisted ? 1 : 0}
         />
       </div>
