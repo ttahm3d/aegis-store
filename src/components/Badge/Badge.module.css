@@ -36,3 +36,22 @@
   color: hsla(var(--primary-dark), 1);
   border-radius: 50%;
 }
+
+@media screen and (max-width: 45em) {
+  .badge {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .badge__icon {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .badge__text {
+    font-size: 1.25rem;
+  }
+}

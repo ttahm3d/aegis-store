@@ -27,8 +27,8 @@ export default function () {
 
   const loginWithTestCreds = async () => {
     handleUserLogin({
-      email: "testuser@gmail.com",
-      password: "testuser",
+      email: "tahirahmedt97@gmail.com",
+      password: "kolaveridha",
     });
     navigate("/products");
   };
