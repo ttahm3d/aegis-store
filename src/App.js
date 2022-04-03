@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import styled from "styled-components";
-import { Footer, Header } from "./components";
+import { Footer, Header, ScrollToTop } from "./components";
 import { AuthProvider } from "./context/auth";
 import { ProductsProvider } from "./context/products/";
 import { WishlistProvider } from "./context/wishlist";
@@ -17,6 +17,7 @@ export default function () {
           <AuthProvider>
             <WishlistProvider>
               <CartProvider>
+                <ScrollToTop />
                 <Header />
                 <Router />
                 <Footer />
