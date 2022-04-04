@@ -35,9 +35,13 @@ const WishlistProvider = ({ children }) => {
     if (isLoggedIn) fetchWishlist();
   }, []);
 
-  const addToWishlist = async (product) => {
+  const addToWishlist = async (product, page) => {
     if (isLoggedIn) {
-      if (wishlistState.wishlist.some((item) => item._id === product._id)) {
+      if (page === "cart") return;
+      else if (
+        wishlistState.wishlist.some((item) => item._id === product._id) &&
+        page === "product"
+      ) {
         removeFromWishlist(product);
       } else {
         try {

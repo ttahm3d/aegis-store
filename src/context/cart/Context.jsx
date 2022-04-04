@@ -105,7 +105,7 @@ const CartProvider = ({ children }) => {
 
   const moveToWishlist = (product) => {
     removeFromCart(product);
-    addToWishlist(product);
+    addToWishlist(product, "cart");
   };
 
   const incrementQuantityOfItem = async (product) => {
