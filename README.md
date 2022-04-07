@@ -4,6 +4,29 @@ E-Commerce store for DotA 2 merchendise and gaming accessories
 
 ---
 
+## Deployed site
+
+The project is deployed on Vercel on the below url
+
+[https://aegis-store-mock.vercel.app](https://aegis-store-mock.vercel.app)
+
+---
+
+## Features
+
+- Product Listing
+- Guest login
+- Filtering / sort products based on
+  - price
+  - ratings
+  - categories
+- Wishlist Products
+- Add Products to Cart
+- Move products from cart to wishlist and vice-versa
+- Checkout (fake checkout for now will be implemented along with P1 features)
+
+---
+
 ## Running locally
 
 If you are using `yarn` as your package manager run the `yarn` commands else use `npm` commands
@@ -11,7 +34,7 @@ If you are using `yarn` as your package manager run the `yarn` commands else use
 Clone the git repository
 
 ```cmd
-git clone https://github.com/ttahm3d/aegis-store.git
+git clone https://github.com/ttahm3d/aegis-store-mock.git
 ```
 
 Open the folder in your favorite editor or use the below command from your current location if you are using terminal to enter into that folder
@@ -47,14 +70,6 @@ After it is completed run
 ```
 npm start
 ```
-
----
-
-## Deployed site
-
-The project is deployed on Vercel on the below url
-
-[https://aegis-store-mock.vercel.app](https://aegis-store-mock.vercel.app)
 
 ---
 
