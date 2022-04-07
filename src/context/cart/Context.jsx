@@ -179,7 +179,7 @@ const CartProvider = ({ children }) => {
       value={{
         cart: cartState.cartItems,
         cartSize: cartState.cartSize,
-        total: cartState.cartTotalAmount,
+        total: cartState.cartTotalAmount.toFixed(2),
         addToCart,
         removeFromCart,
         incrementQuantityOfItem,

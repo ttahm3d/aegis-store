@@ -43,8 +43,6 @@
 .cart__price,
 .pricing__prices {
   font-family: "IBM Plex Sans Arabic", sans-serif;
-  display: flex;
-  gap: 1rem;
   padding: 0.5rem 0;
   align-items: baseline;
 }
@@ -120,7 +118,6 @@
   border-bottom: 1px solid hsla(var(--font-500), 0.4);
 }
 
-.pricing__item,
 .pricing__shipping,
 .pricing__discount,
 .pricing__total {
@@ -156,6 +153,20 @@
 .pricing__total__name {
   font-weight: 600;
   font-size: 1.2rem;
+}
+
+.pricing__item {
+  display: grid;
+  grid-template-columns: 3fr 80px 120px 120px;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pricing__selling__price,
+.pricing__actual__price {
+  align-self: end;
+  text-align: right;
 }
 
 @media screen and (min-width: 35em) {

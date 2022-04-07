@@ -107,9 +107,6 @@ export default function () {
                   <ul
                     style={{ display: showDropdown ? "block" : "none" }}
                     className={styles.dropdown}>
-                    <li>
-                      <Link to="/user">Profile</Link>
-                    </li>
                     <li onClick={handleLogout}>Logout</li>
                   </ul>
                 </li>
