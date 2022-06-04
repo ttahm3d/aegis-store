@@ -67,7 +67,7 @@ export default function () {
       <section
         style={{
           height: showSidebar ? "45vh" : "0",
-          overflow: showSidebar ? "hidden auto" : "hidden",
+          overflow: showSidebar && "hidden auto",
         }}
         className={styles.sidebar__container}>
         <div className="sidebar-section">

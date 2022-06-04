@@ -27,6 +27,15 @@ The project is deployed on Vercel on the below url
 
 ---
 
+## Techstack
+
+- ReactJS
+- ContextAPI for state management
+- [ChunksUI](https://chunksui.netlify.app) Component library for styling
+- MirageJS for mockbackend
+
+---
+
 ## Running locally
 
 If you are using `yarn` as your package manager run the `yarn` commands else use `npm` commands
@@ -95,3 +104,11 @@ eg: If the issue is about "Wishlist functionality" and issue number is 41, name 
 ```
 AS-41-Wishlist-Fix
 ```
+
+---
+
+## Preview Screenshots
+
+![AegisStore](https://res.cloudinary.com/dut75albw/image/upload/v1654321936/AegisStore/AegisStore_Windows_bomasn.png)
+
+<img src="https://res.cloudinary.com/dut75albw/image/upload/v1654321929/AegisStore/AegisStore_iPhoneSE_hfsxgz.png" alt="AegisStoreIPhoneSE" width="360" />

@@ -12,7 +12,7 @@
 .links__heading {
   font-weight: 600;
   text-transform: uppercase;
-  color: hsla(var(--font-600), 0.85);
+  color: hsla(var(--font-600), 1);
 }
 
 .list {
@@ -22,7 +22,7 @@
 }
 
 .list__item {
-  color: hsla(var(--font-500), 0.7);
+  color: hsla(var(--font-600), 1);
   padding-bottom: 0.5rem;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .list__item:hover {
-  color: hsla(var(--font-700), 0.8);
+  color: hsla(var(--font-700), 1);
 }
 
 @media screen and (min-width: 60em) {

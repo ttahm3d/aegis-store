@@ -46,5 +46,5 @@ input[type="range"] {
 }
 
 .header-inactive {
-  color: hsla(var(--font-600), 0.9);
+  color: hsla(var(--font-700), 1);
 }

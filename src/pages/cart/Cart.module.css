@@ -17,10 +17,10 @@
 .cart__card {
   display: grid;
   grid-template-columns: 1fr;
+  background-color: hsla(var(--bg-500), 1);
 }
 
 .cart__image__container {
-  background-color: hsla(var(--bg-600), 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,14 +57,14 @@
 .pricing__actual__price {
   font-size: 1.2rem;
   letter-spacing: -1px;
-  color: hsla(var(--font-500), 0.7);
+  color: hsla(var(--font-500), 1);
   text-decoration: line-through;
 }
 
 .cart__discount {
-  background-color: hsla(113, 96%, 69%, 0.3);
+  background-color: hsla(var(--green-500), 0.3);
   display: inline-block;
-  color: hsla(113, 56%, 25%, 0.8);
+  color: hsl(var(--green-500));
   padding: 0.5rem 1rem;
 }
 
@@ -83,6 +83,7 @@
   outline: 1px solid transparent;
   outline-offset: 2px;
   font-weight: bolder;
+  background-color: hsla(var(--blue-500), 0.25);
   border-radius: 50%;
   min-width: 2em;
   min-height: 2em;
@@ -104,6 +105,7 @@
 .pricing__container {
   padding: 1.5rem 1rem;
   height: max-content;
+  background-color: hsl(var(--bg-500));
 }
 
 .pricing__heading {
@@ -128,7 +130,7 @@
 
 .pricing__item__name {
   font-weight: 500;
-  color: hsla(var(--font-600), 0.7);
+  color: hsla(var(--font-600), 1);
 }
 
 .pricing__prices {
@@ -182,5 +184,10 @@
 
   .cart__name {
     font-size: 2.5rem;
+  }
+
+  .pricing__container {
+    position: sticky;
+    top: 9rem;
   }
 }
