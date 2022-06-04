@@ -24,7 +24,7 @@ export default function ({ wishlistItem }) {
             Move to Cart
           </button>
           <button
-            className="btn btn-seconday"
+            className="btn btn-secondary"
             onClick={() => removeFromWishlist(wishlistItem)}>
             Remove from wishlist
           </button>

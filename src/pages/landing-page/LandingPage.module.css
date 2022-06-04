@@ -1,5 +1,5 @@
 .hero {
-  background-color: hsla(var(--bg-600), 0.9);
+  background-color: hsl(var(--bg-500));
 }
 
 .hero__container {
@@ -52,7 +52,9 @@
   transition: 0.5s all linear;
   cursor: pointer;
   align-items: center;
-  background-color: hsla(var(--bg-700), 1);
+  border: 1px solid hsl(var(--bg-300));
+  background-color: hsl(var(--bg-500));
+  border-radius: 0.25rem;
 }
 
 .category__image {
@@ -63,6 +65,7 @@
   padding: 0.5rem 1rem;
   margin-inline: auto;
   font-weight: 700;
+  font-size: 1.25rem;
   text-transform: uppercase;
 }
 
