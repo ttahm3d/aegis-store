@@ -4,7 +4,7 @@ import styles from "./Cart.module.css";
 export default function () {
   const { cart, total, placeOrder } = useCart();
 
-  const totalToShow = Number(total).toFixed(2);
+  const totalToShow = parseFloat(total + 1500).toFixed(2);
 
   return (
     <div className={`${styles.pricing__container} shadow`}>
@@ -32,9 +32,7 @@ export default function () {
       </div>
       <div className={styles.pricing__total}>
         <div className={styles.pricing__total__name}>Total</div>
-        <div className={styles.pricing__price}>
-          &#8377;{Number(total + 1500).toFixed(2)}
-        </div>
+        <div className={styles.pricing__price}>&#8377;{totalToShow}</div>
       </div>
       <div className="flex flex-column">
         <button onClick={() => placeOrder()} className="btn btn-accent">
