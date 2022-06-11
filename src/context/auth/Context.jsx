@@ -1,8 +1,8 @@
 import { createContext, useContext, useReducer } from "react";
 import axios from "axios";
 import { useLocalStorage } from "../../hooks";
+import { toast } from "react-hot-toast";
 import { authReducer } from "./Reducer";
-import { Toast } from "../../components";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
@@ -18,13 +18,12 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const handleUserLogin = async (loginForm, path) => {
-    console.log(path);
     try {
       const response = await axios.post("/api/auth/login", loginForm);
       if (response.status === 200) {
         setUserToken(response?.data.encodedToken);
         setUserData(response?.data?.user);
-        Toast({ message: "You have successsfully logged in", type: "success" });
+        toast.success("Login Successful");
         authDispatch({
           type: "LOGIN",
           payload: response?.data?.user,
@@ -33,10 +32,7 @@ const AuthProvider = ({ children }) => {
       navigate(path, { replace: true });
     } catch (e) {
       console.error(e);
-      Toast({
-        message: "Invalid credentials. Please try again.",
-        type: "error",
-      });
+      toast.error("Invalid credentials. Email and Password don't match");
     }
   };
 
@@ -47,12 +43,9 @@ const AuthProvider = ({ children }) => {
     try {
       localStorage.removeItem("user-token");
       localStorage.removeItem("user-data");
-      Toast({ message: "Logout successful!!", type: "success" });
+      toast.success("Logout Successful");
     } catch (e) {
-      Toast({
-        message: "Could not log you out. Please try again.",
-        type: "error",
-      });
+      toast.error("Could not log you out. Please try again.");
     }
   };
 
@@ -66,18 +59,12 @@ const AuthProvider = ({ children }) => {
           type: "SIGNUP",
           payload: data?.user,
         });
-        Toast({
-          message: "Welcome!! You have successsfully signed up.",
-          type: "success",
-        });
+        toast.success("Welcome!! You have successsfully signed up.");
         navigate(path, { replace: true });
       }
     } catch (e) {
       console.error(e);
-      Toast({
-        message: "There was an issue in signup. Please try again",
-        type: "error",
-      });
+      toast.error("There was an issue in signup. Please try again");
     }
   };
 
