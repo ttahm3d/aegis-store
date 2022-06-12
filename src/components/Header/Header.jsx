@@ -57,7 +57,7 @@ export default function () {
   ];
 
   return (
-    <header className={`${styles.header}`}>
+    <header className={styles.header}>
       <div className="main-container">
         <nav className={styles.navbar}>
           <div

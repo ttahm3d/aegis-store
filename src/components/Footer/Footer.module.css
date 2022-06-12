@@ -1,6 +1,7 @@
 .footer {
   margin-top: auto;
   padding: 4rem 0;
+  border: 2px solid hsl(var(--bg-400));
 }
 
 .footer__container {

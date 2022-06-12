@@ -25,7 +25,7 @@ const extLinks = [
 ];
 export default function () {
   return (
-    <footer className={`shadow ${styles.footer}`}>
+    <footer className={styles.footer}>
       <div className="main-container">
         <div className={styles.footer__container}>
           <div className="logo-container">
