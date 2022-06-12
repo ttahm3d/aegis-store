@@ -57,7 +57,6 @@
 
 .cart__actual__price,
 .pricing__actual__price {
-  font-size: 1.2rem;
   letter-spacing: -1px;
   color: hsla(var(--font-500), 1);
   text-decoration: line-through;
@@ -175,24 +174,26 @@
 
 .pricing__item {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 10px 80px 50px;
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
 }
 
-@media screen and (min-width: 46.75em) {
+@media screen and (min-width: 56.75em) {
   .cart__cards__pricing__container {
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 3fr 1fr;
     gap: 2rem;
-  }
-
-  .cart__card {
-    grid-template-columns: 1fr 3fr;
   }
 
   .pricing__container {
     position: sticky;
     top: 9rem;
+  }
+}
+
+@media screen and (min-width: 46.75em) {
+  .cart__card {
+    grid-template-columns: 1fr 3fr;
   }
 }
