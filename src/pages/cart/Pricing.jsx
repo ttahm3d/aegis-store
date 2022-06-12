@@ -22,7 +22,6 @@ export default function () {
             <div className={styles.pricing__actual__price}>
               &#8377;{cartItem.actualPrice}
             </div>
-            {/* </div> */}
           </div>
         ))}
       </div>
