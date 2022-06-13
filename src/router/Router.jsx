@@ -1,29 +1,36 @@
 import { Route, Routes } from "react-router-dom";
-import { Wishlist } from "../pages/wishlist";
-import { Cart } from "../pages/cart";
-import { Listing } from "../pages/products";
-import { NotFound } from "../pages/utils";
-import { LandingPage } from "../pages/landing-page";
-import { MockApi } from "../pages/api-response";
-import { Signup, Login } from "../pages/auth";
+import { Suspense, lazy } from "react";
 import RequireAuth from "./RequireAuth";
 import RedirectAuth from "./RedirectAuth";
+import { Loader } from "../components";
+
+const Login = lazy(() => import("../pages/auth/Login/Login"));
+const Signup = lazy(() => import("../pages/auth/Signup/Signup"));
+
+const LandingPage = lazy(() => import("../pages/landing-page/LandingPage"));
+const Listing = lazy(() => import("../pages/products/Listing/Listing"));
+const Wishlist = lazy(() => import("../pages/wishlist/Wishlist"));
+const Cart = lazy(() => import("../pages/cart/Cart"));
+const MockApi = lazy(() => import("../pages/auth/Signup/Signup"));
+const NotFound = lazy(() => import("../pages/utils/NotFound/NotFound"));
 
 export default function () {
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route element={<RequireAuth />}>
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-      </Route>
-      <Route element={<RedirectAuth />}>
-        <Route path="/auth/login" element={<Login />} />
-        <Route path="/auth/signup" element={<Signup />} />
-      </Route>
-      <Route path="/products" element={<Listing />} />
-      <Route path="/api-response" element={<MockApi />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route element={<RequireAuth />}>
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+        </Route>
+        <Route element={<RedirectAuth />}>
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/signup" element={<Signup />} />
+        </Route>
+        <Route path="/products" element={<Listing />} />
+        <Route path="/api-response" element={<MockApi />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   );
 }
