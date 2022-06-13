@@ -5,9 +5,9 @@ import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/auth";
 import { ProductsProvider } from "./context/products/";
 import { WishlistProvider } from "./context/wishlist";
-
-import Router from "./router/Router";
+import { AddressProvider } from "./context/address";
 import { CartProvider } from "./context/cart";
+import Router from "./router/Router";
 
 export default function () {
   return (
@@ -17,12 +17,14 @@ export default function () {
         <ProductsProvider>
           <AuthProvider>
             <WishlistProvider>
-              <CartProvider>
-                <ScrollToTop />
-                <Header />
-                <Router />
-                <Footer />
-              </CartProvider>
+              <AddressProvider>
+                <CartProvider>
+                  <ScrollToTop />
+                  <Header />
+                  <Router />
+                  <Footer />
+                </CartProvider>
+              </AddressProvider>
             </WishlistProvider>
           </AuthProvider>
         </ProductsProvider>
