@@ -9,14 +9,18 @@ const AddressProvider = ({ children }) => {
   const [addressState, addressDispatch] = useReducer(addressReducer, {
     address: [],
   });
+
+  console.log(addressState);
+
   useEffect(() => {
     (async () => {
       try {
-        const response = getUserAddressHandler();
+        const response = await getUserAddressHandler();
+        console.log(response);
         if (response.status === 200) {
           addressDispatch({
             type: "GET_ADDRESS",
-            payload: response?.data?.address,
+            payload: response?.data?.addresses,
           });
         }
       } catch (error) {
@@ -25,13 +29,14 @@ const AddressProvider = ({ children }) => {
     })();
   }, []);
 
-  const addNewAddress = (address) => {
+  const addNewAddress = async (address) => {
     try {
-      const response = addNewAddressHandler(address);
+      const response = await addNewAddressHandler(address);
+      console.log(response);
       if (response.status === 201) {
         addressDispatch({
           type: "ADD_ADDRESS",
-          payload: response?.data?.address,
+          payload: response?.data?.addresses,
         });
       }
     } catch (error) {

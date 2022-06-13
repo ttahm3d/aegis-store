@@ -11,7 +11,7 @@ const LandingPage = lazy(() => import("../pages/landing-page/LandingPage"));
 const Listing = lazy(() => import("../pages/products/Listing/Listing"));
 const Wishlist = lazy(() => import("../pages/wishlist/Wishlist"));
 const Cart = lazy(() => import("../pages/cart/Cart"));
-const MockApi = lazy(() => import("../pages/auth/Signup/Signup"));
+const MockApi = lazy(() => import("../pages/api-response/ApiResponse"));
 const NotFound = lazy(() => import("../pages/utils/NotFound/NotFound"));
 
 export default function () {

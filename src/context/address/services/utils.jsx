@@ -1,14 +1,15 @@
 import axios from "axios";
 
-const getUserAddressHandler = async () =>
-  await axios.get("/api/user/addresses", {
+const getUserAddressHandler = () =>
+  axios.get("/api/user/addresses", {
     headers: {
       authorization: JSON.parse(localStorage.getItem("user-token")),
     },
   });
 
-const addNewAddressHandler = async (address) =>
-  await axios.get(
+const addNewAddressHandler = (address) => {
+  console.log(address);
+  return axios.post(
     "/api/user/addresses",
     { address },
     {
@@ -17,5 +18,6 @@ const addNewAddressHandler = async (address) =>
       },
     }
   );
+};
 
 export { getUserAddressHandler, addNewAddressHandler };
