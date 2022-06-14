@@ -14,7 +14,7 @@
   padding: 2rem;
   width: min(30rem, 90vw);
   max-height: 60vh;
-  background-color: hsl(var(--gray-500));
+  background-color: hsl(var(--bg-500));
 }
 
 .header {

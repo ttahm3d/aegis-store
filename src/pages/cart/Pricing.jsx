@@ -1,12 +1,18 @@
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { useCart } from "../../context/cart";
 import styles from "./Cart.module.css";
-import { useAddress } from "../../context/address/Context";
+import { Modal } from "../../components";
 
 export default function () {
-  const { cart, total, placeOrder } = useCart();
+  const { cart, total } = useCart();
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
-  const { addNewAddress } = useAddress();
   const totalToShow = parseFloat(total + 1500).toFixed(2);
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
   return (
     <div className={`${styles.pricing__container} shadow`}>
@@ -35,8 +41,13 @@ export default function () {
         <div className={styles.pricing__price}>&#8377;{totalToShow}</div>
       </div>
       <div className="flex flex-column">
-        <button className="btn btn-accent">Place Order</button>
+        <button className="btn btn-accent" onClick={openModal}>
+          Place Order
+        </button>
       </div>
+      <Modal showModal={showModal} closeModal={closeModal} header="Place Order">
+        <div>Checkout</div>
+      </Modal>
     </div>
   );
 }
