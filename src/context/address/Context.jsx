@@ -10,13 +10,10 @@ const AddressProvider = ({ children }) => {
     address: [],
   });
 
-  console.log(addressState);
-
   useEffect(() => {
     (async () => {
       try {
         const response = await getUserAddressHandler();
-        console.log(response);
         if (response.status === 200) {
           addressDispatch({
             type: "GET_ADDRESS",
@@ -32,7 +29,6 @@ const AddressProvider = ({ children }) => {
   const addNewAddress = async (address) => {
     try {
       const response = await addNewAddressHandler(address);
-      console.log(response);
       if (response.status === 201) {
         addressDispatch({
           type: "ADD_ADDRESS",
@@ -47,7 +43,7 @@ const AddressProvider = ({ children }) => {
   return (
     <AddressContext.Provider
       value={{
-        address: addressState?.address,
+        addresses: addressState?.address,
         addNewAddress,
       }}>
       {children}
