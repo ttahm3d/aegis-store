@@ -1,10 +1,23 @@
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { useCart } from "../../context/cart";
 import styles from "./Cart.module.css";
+import { Modal } from "../../components";
+import AddressModal from "./AddressModal";
 
 export default function () {
   const { cart, total, placeOrder } = useCart();
+  const [showModal, setShowModal] = useState(false);
 
-  const totalToShow = Number(total).toFixed(2);
+  const totalToShow = parseFloat(total + 1500).toFixed(2);
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+
+  const closeOnSuccess = () => {
+    placeOrder();
+    closeModal();
+  };
 
   return (
     <div className={`${styles.pricing__container} shadow`}>
@@ -13,7 +26,6 @@ export default function () {
         {cart.map((cartItem) => (
           <div key={cartItem._id} className={styles.pricing__item}>
             <div className={styles.pricing__item__name}>{cartItem.name}</div>
-            {/* <div className={styles.pricing__prices}> */}
             <div className={styles.pricing__quantity}>{cartItem.qty}</div>
             <div className={styles.pricing__selling__price}>
               &#8377;
@@ -22,7 +34,6 @@ export default function () {
             <div className={styles.pricing__actual__price}>
               &#8377;{cartItem.actualPrice}
             </div>
-            {/* </div> */}
           </div>
         ))}
       </div>
@@ -32,15 +43,16 @@ export default function () {
       </div>
       <div className={styles.pricing__total}>
         <div className={styles.pricing__total__name}>Total</div>
-        <div className={styles.pricing__price}>
-          &#8377;{Number(total + 1500).toFixed(2)}
-        </div>
+        <div className={styles.pricing__price}>&#8377;{totalToShow}</div>
       </div>
       <div className="flex flex-column">
-        <button onClick={() => placeOrder()} className="btn btn-accent">
+        <button className="btn btn-accent" onClick={openModal}>
           Place Order
         </button>
       </div>
+      <Modal showModal={showModal} closeModal={closeModal} header="Place Order">
+        <AddressModal total={totalToShow} cart={cart} clear={closeOnSuccess} />
+      </Modal>
     </div>
   );
 }

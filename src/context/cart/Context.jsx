@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useReducer, createContext } from "react";
-import { Toast } from "../../components";
+import { toast } from "react-hot-toast";
 import { useAuth } from "../auth";
 import { useWishlist } from "../wishlist/";
 import { cartReducer } from "./Reducer";
@@ -61,24 +61,14 @@ const CartProvider = ({ children }) => {
               type: "ADD_TO_CART",
               payload: res?.data?.cart,
             });
-            Toast({
-              type: "success",
-              message: `${product.name} has been added to cart`,
-            });
+            toast.success(`${product.name} has been added to cart`);
           }
         } catch (e) {
           console.error(e);
-          Toast({
-            type: "error",
-            message: "Something went wrong. Try again.",
-          });
+          toast.error("Something went wrong. Please try again");
         }
       }
-    } else
-      Toast({
-        type: "error",
-        message: "Please login to perform this action",
-      });
+    } else toast.error("Please login to perform this action");
   };
 
   const removeFromCart = async (product) => {
@@ -93,10 +83,7 @@ const CartProvider = ({ children }) => {
           type: "REMOVE_FROM_CART",
           payload: res?.data?.cart,
         });
-        Toast({
-          type: "info",
-          message: `${product.name} has been removed from cart`,
-        });
+        toast.success(`${product.name} has been removed from cart`);
       }
     } catch (e) {
       console.error(e);
@@ -124,13 +111,11 @@ const CartProvider = ({ children }) => {
           type: "INCREASE_QUANTITY",
           payload: res?.data?.cart,
         });
-        Toast({
-          type: "warning",
-          message: `${product.name}'s quantity increased by 1`,
-        });
+        toast.success(`${product.name}'s quantity increased by 1`);
       }
     } catch (e) {
       console.error(e);
+      toast.error("Something went wrong. Try again after some time");
     }
   };
 
@@ -153,10 +138,7 @@ const CartProvider = ({ children }) => {
             type: "INCREASE_QUANTITY",
             payload: res?.data?.cart,
           });
-          Toast({
-            type: "info",
-            message: `${product.name}'s quantity decreased by 1`,
-          });
+          toast(`${product.name}'s quantity decreased by 1`);
         }
       } catch (e) {
         console.error(e);
@@ -168,10 +150,7 @@ const CartProvider = ({ children }) => {
     cartDispatch({
       type: "RESET",
     });
-    Toast({
-      type: "success",
-      message: "Hurray!!! Your order has been placed",
-    });
+    toast.success("Hurray!!! Your order has been placed");
   };
 
   return (
@@ -179,7 +158,7 @@ const CartProvider = ({ children }) => {
       value={{
         cart: cartState.cartItems,
         cartSize: cartState.cartSize,
-        total: cartState.cartTotalAmount.toFixed(2),
+        total: cartState.cartTotalAmount,
         addToCart,
         removeFromCart,
         incrementQuantityOfItem,

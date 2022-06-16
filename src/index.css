@@ -48,3 +48,7 @@ input[type="range"] {
 .header-inactive {
   color: hsla(var(--font-700), 1);
 }
+
+.btn-accent {
+  background-color: hsl(var(--accent));
+}

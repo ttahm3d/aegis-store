@@ -1,7 +1,7 @@
 .header {
   padding: 1.5rem 0;
   background-color: hsl(var(--bg-700));
-  box-shadow: 0 0 4px hsl(var(--bg-400));
+  border: 2px solid hsl(var(--bg-400));
   position: sticky;
   top: 0;
   z-index: 8;

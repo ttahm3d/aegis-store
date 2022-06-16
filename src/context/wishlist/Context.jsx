@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useReducer, createContext } from "react";
-import { Toast } from "../../components";
+import { toast } from "react-hot-toast";
 import { useAuth } from "../auth";
 import { wishlistReducer } from "./Reducer";
 
@@ -61,17 +61,13 @@ const WishlistProvider = ({ children }) => {
               type: "ADD_TO_WISHLIST",
               payload: res?.data?.wishlist,
             });
-            Toast({
-              type: "info",
-              message: `${product.name} has been added to wishlist`,
-            });
+            toast.success(`${product.name} has been added to wishlist`);
           }
         } catch (e) {
           console.error(e);
-          Toast({
-            type: "error",
-            message: `${product.name} could not be added to wishlist. Try again`,
-          });
+          toast.error(
+            `${product.name} could not be added to wishlist. Try again`
+          );
         }
       }
     } else
@@ -86,21 +82,15 @@ const WishlistProvider = ({ children }) => {
         },
       });
       if (res.status === 200) {
-        Toast({
-          type: "warning",
-          message: `${product.name} has been removed from wishlist`,
-        });
         wishlistDispatch({
           type: "REMOVE_FROM_WISHLIST",
           payload: res?.data?.wishlist,
         });
+        toast.success(`${product.name} has been removed wishlist`);
       }
     } catch (e) {
       console.error(e);
-      Toast({
-        type: "error",
-        message: `${product.name} could not removed from wishlist. Try again`,
-      });
+      toast.error(`${product.name} could not removed from wishlist. Try again`);
     }
   };
 
