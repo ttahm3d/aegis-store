@@ -34,6 +34,11 @@ export default function ({ cart, clear }) {
         };
         clear();
       },
+      prefill: {
+        name: "Tahir Ahmed",
+        email: "tahir.ahmed@test.com",
+        contact: "9999999999",
+      },
       theme: {
         color: "#1890ff",
       },
