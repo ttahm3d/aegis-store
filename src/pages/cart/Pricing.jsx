@@ -3,16 +3,21 @@ import { useState } from "react";
 import { useCart } from "../../context/cart";
 import styles from "./Cart.module.css";
 import { Modal } from "../../components";
+import AddressModal from "./AddressModal";
 
 export default function () {
-  const { cart, total } = useCart();
-  const navigate = useNavigate();
+  const { cart, total, placeOrder } = useCart();
   const [showModal, setShowModal] = useState(false);
 
   const totalToShow = parseFloat(total + 1500).toFixed(2);
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
+
+  const closeOnSuccess = () => {
+    placeOrder();
+    closeModal();
+  };
 
   return (
     <div className={`${styles.pricing__container} shadow`}>
@@ -46,7 +51,7 @@ export default function () {
         </button>
       </div>
       <Modal showModal={showModal} closeModal={closeModal} header="Place Order">
-        <div>Checkout</div>
+        <AddressModal total={totalToShow} cart={cart} clear={closeOnSuccess} />
       </Modal>
     </div>
   );

@@ -23,7 +23,17 @@ export const users = [
     lastName: "Ahmed",
     email: "tahirahmedt97@gmail.com",
     password: "kolaveridha",
-    addresses: [],
+    addresses: [
+      {
+        name: "Tahir Ahmed T",
+        type: "work",
+        addressLine1: "6879 RMZ Ecospace",
+        addressLine2: "Kadubessanahalli",
+        addressLine3: "",
+        city: "Bengaluru",
+        pincode: "560064",
+      },
+    ],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

@@ -1,0 +1,16 @@
+.address {
+  padding: 0.5rem;
+  background-color: hsl(var(--bg-300));
+  border: 1px solid hsl(var(--blue-700));
+}
+
+.address__name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: hsl(var(--font-700));
+}
+
+.address__line {
+  font-size: 0.85rem;
+  color: hsl(var(--font-600));
+}
