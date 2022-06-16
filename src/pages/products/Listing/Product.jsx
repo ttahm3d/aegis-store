@@ -4,6 +4,7 @@ import Rating from "../../../components/Rating/Rating";
 import styles from "./Listing.module.css";
 import { useWishlist } from "../../../context/wishlist";
 import { useCart } from "../../../context/cart";
+import { useNavigate } from "react-router-dom";
 
 export default function ({ product }) {
   const {
@@ -22,9 +23,12 @@ export default function ({ product }) {
   const { addToCart } = useCart();
 
   const wishlisted = wishlist.some((item) => item._id === product._id);
+  const navigate = useNavigate();
 
   return (
-    <div className={`card shadow ${styles.product__card}`}>
+    <div
+      className={`card shadow ${styles.product__card}`}
+      onClick={() => navigate(`/products/${_id}`)}>
       <div className={`flex flex-center ${styles.image__container}`}>
         <img
           src={imageUrl}

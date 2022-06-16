@@ -9,6 +9,7 @@ const Signup = lazy(() => import("../pages/auth/Signup/Signup"));
 
 const LandingPage = lazy(() => import("../pages/landing-page/LandingPage"));
 const Listing = lazy(() => import("../pages/products/Listing/Listing"));
+const Detail = lazy(() => import("../pages/products/Detail/Detail"));
 const Wishlist = lazy(() => import("../pages/wishlist/Wishlist"));
 const Cart = lazy(() => import("../pages/cart/Cart"));
 const MockApi = lazy(() => import("../pages/api-response/ApiResponse"));
@@ -28,6 +29,7 @@ export default function () {
           <Route path="/auth/signup" element={<Signup />} />
         </Route>
         <Route path="/products" element={<Listing />} />
+        <Route path="/products/:productId" element={<Detail />} />
         <Route path="/api-response" element={<MockApi />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
