@@ -26,9 +26,7 @@ export default function ({ product }) {
   const navigate = useNavigate();
 
   return (
-    <div
-      className={`card shadow ${styles.product__card}`}
-      onClick={() => navigate(`/products/${_id}`)}>
+    <div className={`card shadow ${styles.product__card}`}>
       <div className={`flex flex-center ${styles.image__container}`}>
         <img
           src={imageUrl}
@@ -58,9 +56,17 @@ export default function ({ product }) {
         </div>
         <div>
           <button
-            onClick={() => addToCart(product)}
+            onClick={(e) => {
+              addToCart(product);
+              e.stopPropogation();
+            }}
             className="btn btn-primary wd-100">
             Add to Cart
+          </button>
+          <button
+            onClick={() => navigate(`/products/${_id}`)}
+            className="btn btn-secondary wd-100 m-y-1">
+            View Details
           </button>
         </div>
       </div>
@@ -73,7 +79,10 @@ export default function ({ product }) {
       ) : null}
       <div className={styles.wishlist__btn}>
         <WishlistButton
-          onClick={() => addToWishlist(product, "product")}
+          onClick={(e) => {
+            addToWishlist(product, "product");
+            e.stopPropogation();
+          }}
           wishlisted={wishlisted ? 1 : 0}
         />
       </div>

@@ -1,0 +1,54 @@
+.details__wrapper {
+  width: min(85vw, 80em);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.image__container {
+  background: hsl(var(--bg-500));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.information__container {
+  padding: 0;
+}
+
+.name {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.description {
+  color: hsl(var(--font-600));
+}
+
+.selling__price {
+  font-size: 1.25rem;
+  letter-spacing: -1px;
+}
+
+.actual__price {
+  letter-spacing: -1px;
+  text-decoration: line-through;
+}
+
+.discount {
+  background-color: hsla(var(--green-500), 0.45);
+  display: inline-block;
+  color: hsl(var(--green-500));
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+.feature {
+  color: hsl(var(--font-500));
+}
+
+.feature::before {
+  content: ">> ";
+}
