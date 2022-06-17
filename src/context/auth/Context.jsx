@@ -1,9 +1,10 @@
 import { createContext, useContext, useReducer } from "react";
-import axios from "axios";
 import { useLocalStorage } from "../../hooks";
 import { toast } from "react-hot-toast";
 import { authReducer } from "./Reducer";
 import { useNavigate } from "react-router-dom";
+import { loginHandler, signupHandler } from "./utils/services";
+import { LOGIN, LOGOUT, SIGNUP } from "./utils/constants";
 
 const AuthContext = createContext();
 
@@ -19,13 +20,13 @@ const AuthProvider = ({ children }) => {
 
   const handleUserLogin = async (loginForm, path) => {
     try {
-      const response = await axios.post("/api/auth/login", loginForm);
+      const response = await loginHandler(loginForm);
       if (response.status === 200) {
         setUserToken(response?.data.encodedToken);
         setUserData(response?.data?.user);
         toast.success("Login Successful");
         authDispatch({
-          type: "LOGIN",
+          type: LOGIN,
           payload: response?.data?.user,
         });
       }
@@ -38,7 +39,7 @@ const AuthProvider = ({ children }) => {
 
   const handleUserLogout = async () => {
     authDispatch({
-      type: "LOGOUT",
+      type: LOGOUT,
     });
     try {
       localStorage.removeItem("user-token");
@@ -51,13 +52,13 @@ const AuthProvider = ({ children }) => {
 
   const handleUserSignup = async (signupForm, path) => {
     try {
-      const { status, data } = await axios.post("/api/auth/signup", signupForm);
-      if (status === 201) {
+      const res = await signupHandler(signupForm);
+      if (res.status === 201) {
         setUserToken(data.encodedToken);
         setUserData(data?.user);
         authDispatch({
-          type: "SIGNUP",
-          payload: data?.user,
+          type: SIGNUP,
+          payload: res?.data?.user,
         });
         toast.success("Welcome!! You have successsfully signed up.");
         navigate(path, { replace: true });
