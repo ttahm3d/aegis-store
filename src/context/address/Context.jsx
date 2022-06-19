@@ -1,7 +1,6 @@
 import { useContext, useEffect, useReducer, createContext } from "react";
 import { addressReducer } from "./Reducer";
 import { getUserAddressHandler, addNewAddressHandler } from "./services/utils";
-import { toast } from "react-hot-toast";
 
 const AddressContext = createContext();
 
