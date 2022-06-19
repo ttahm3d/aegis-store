@@ -8,7 +8,6 @@ const getUserAddressHandler = () =>
   });
 
 const addNewAddressHandler = (address) => {
-  console.log(address);
   return axios.post(
     "/api/user/addresses",
     { address },

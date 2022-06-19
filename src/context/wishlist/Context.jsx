@@ -3,6 +3,16 @@ import { useContext, useEffect, useReducer, createContext } from "react";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../auth";
 import { wishlistReducer } from "./Reducer";
+import {
+  SET_WISHLIST,
+  ADD_TO_WISHLIST,
+  REMOVE_FROM_WISHLIST,
+} from "./utils/constants";
+import {
+  getWishlistItems,
+  addToWishlistHandler,
+  removeFromWishlistHandler,
+} from "./utils/services";
 
 const WishlistContext = createContext();
 
@@ -17,11 +27,7 @@ const WishlistProvider = ({ children }) => {
   useEffect(() => {
     async function fetchWishlist() {
       try {
-        const res = await axios.get("/api/user/wishlist", {
-          headers: {
-            authorization: JSON.parse(localStorage.getItem("user-token")),
-          },
-        });
+        const res = await getWishlistItemsHandler();
         if (res.status === 200) {
           wishlistDispatch({
             type: "GET_WISHLIST",
@@ -45,17 +51,7 @@ const WishlistProvider = ({ children }) => {
         removeFromWishlist(product);
       } else {
         try {
-          const res = await axios.post(
-            "/api/user/wishlist",
-            {
-              product,
-            },
-            {
-              headers: {
-                authorization: JSON.parse(localStorage.getItem("user-token")),
-              },
-            }
-          );
+          const res = await addToWishlistHandler(product);
           if (res.status === 201) {
             wishlistDispatch({
               type: "ADD_TO_WISHLIST",
@@ -76,11 +72,7 @@ const WishlistProvider = ({ children }) => {
 
   const removeFromWishlist = async (product) => {
     try {
-      const res = await axios.delete(`/api/user/wishlist/${product._id}`, {
-        headers: {
-          authorization: JSON.parse(localStorage.getItem("user-token")),
-        },
-      });
+      const res = await removeFromWishlist(product);
       if (res.status === 200) {
         wishlistDispatch({
           type: "REMOVE_FROM_WISHLIST",
