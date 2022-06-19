@@ -1,9 +1,23 @@
-import axios from "axios";
 import { useContext, useEffect, useReducer, createContext } from "react";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../auth";
 import { useWishlist } from "../wishlist/";
 import { cartReducer } from "./Reducer";
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  GET_CART_ITEMS,
+  DECREASE_QUANTITY,
+  INCREASE_QUANTITY,
+  RESET,
+} from "./utils/constants";
+import {
+  addToCartHandler,
+  decreaseItemQuantityHandler,
+  getCartItemsHandler,
+  increaseItemQuantityHandler,
+  removeFromCartHandler,
+} from "./utils/services";
 
 const CartContext = createContext();
 
@@ -22,14 +36,10 @@ const CartProvider = ({ children }) => {
     if (isLoggedIn)
       (async () => {
         try {
-          const res = await axios.get("/api/user/cart", {
-            headers: {
-              authorization: JSON.parse(localStorage.getItem("user-token")),
-            },
-          });
+          const res = await getCartItemsHandler();
           if (res.status === 200) {
             cartDispatch({
-              type: "GET_CART_ITEMS",
+              type: GET_CART_ITEMS,
               payload: res?.data?.cart,
             });
           }
@@ -47,18 +57,10 @@ const CartProvider = ({ children }) => {
         incrementQuantityOfItem(product);
       } else {
         try {
-          const res = await axios.post(
-            "/api/user/cart",
-            { product },
-            {
-              headers: {
-                authorization: JSON.parse(localStorage.getItem("user-token")),
-              },
-            }
-          );
+          const res = await addToCartHandler(product);
           if (res.status === 201) {
             cartDispatch({
-              type: "ADD_TO_CART",
+              type: ADD_TO_CART,
               payload: res?.data?.cart,
             });
             toast.success(`${product.name} has been added to cart`);
@@ -73,14 +75,10 @@ const CartProvider = ({ children }) => {
 
   const removeFromCart = async (product) => {
     try {
-      const res = await axios.delete(`/api/user/cart/${product._id}`, {
-        headers: {
-          authorization: JSON.parse(localStorage.getItem("user-token")),
-        },
-      });
+      const res = await removeFromCartHandler(product);
       if (res.status === 200) {
         cartDispatch({
-          type: "REMOVE_FROM_CART",
+          type: REMOVE_FROM_CART,
           payload: res?.data?.cart,
         });
         toast.success(`${product.name} has been removed from cart`);
@@ -97,18 +95,10 @@ const CartProvider = ({ children }) => {
 
   const incrementQuantityOfItem = async (product) => {
     try {
-      const res = await axios.post(
-        `/api/user/cart/${product._id}`,
-        { action: { type: "increment" } },
-        {
-          headers: {
-            authorization: JSON.parse(localStorage.getItem("user-token")),
-          },
-        }
-      );
+      const res = await increaseItemQuantityHandler(product?._id);
       if (res.status === 200) {
         cartDispatch({
-          type: "INCREASE_QUANTITY",
+          type: INCREASE_QUANTITY,
           payload: res?.data?.cart,
         });
         toast.success(`${product.name}'s quantity increased by 1`);
@@ -124,18 +114,10 @@ const CartProvider = ({ children }) => {
       removeFromCart(product);
     } else {
       try {
-        const res = await axios.post(
-          `/api/user/cart/${product._id}`,
-          { action: { type: "decrement" } },
-          {
-            headers: {
-              authorization: JSON.parse(localStorage.getItem("user-token")),
-            },
-          }
-        );
+        const res = await decreaseItemQuantityHandler(product?._id);
         if (res.status === 200) {
           cartDispatch({
-            type: "INCREASE_QUANTITY",
+            type: DECREASE_QUANTITY,
             payload: res?.data?.cart,
           });
           toast(`${product.name}'s quantity decreased by 1`);
@@ -148,7 +130,7 @@ const CartProvider = ({ children }) => {
 
   const placeOrder = () => {
     cartDispatch({
-      type: "RESET",
+      type: RESET,
     });
     toast.success("Hurray!!! Your order has been placed");
   };
